@@ -12,7 +12,7 @@ function App() {
   return (
     <Router>
       <Switch>
-        <Route path="/login">
+        <Route exact path="/login">
           <LoginPage />
         </Route>
         <PrivateRoute path="/">
