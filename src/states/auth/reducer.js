@@ -2,7 +2,11 @@ import * as types from "./constants";
 import * as localConstants from "constants/local-storage";
 
 const initState = {
-  token: localStorage.getItem(localConstants.TOKEN)
+  token: localStorage.getItem(localConstants.TOKEN),
+  userInfo: {
+    name: "",
+    roles: []
+  }
 };
 
 export default (state = initState, action) => {
@@ -20,6 +24,11 @@ export default (state = initState, action) => {
       return {
         ...state,
         token: null
+      };
+    case types.GET_USER_INFO:
+      return {
+        ...state,
+        userInfo: payload
       };
     default:
       return state;

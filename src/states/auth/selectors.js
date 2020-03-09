@@ -5,4 +5,7 @@ const getAuthState = state => state[STATE_NAME];
 
 const selectToken = () => createSelector(getAuthState, state => state.token);
 
-export { selectToken };
+const selectUserRoles = () =>
+  createSelector(getAuthState, state => state.userInfo.roles);
+
+export { selectToken, selectUserRoles };

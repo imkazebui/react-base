@@ -10,13 +10,23 @@ import {
 import PropTypes from "prop-types";
 import { createStructuredSelector } from "reselect";
 import { selectToken } from "states/auth/selectors";
-import { logout } from "states/auth/actions";
+import { logout, getUserInfo } from "states/auth/actions";
+import { PrivateRoute } from "components/Atoms";
 
-const PrivateLayout = ({ token, logout }) => {
+export const routeName = {
+  DASHBOARD: "DASHBOARD",
+  OTHER_PAGE: "OTHER_PAGE",
+  OTHER_PAGE_1: "OTHER_PAGE_1"
+};
+
+const PrivateLayout = ({ token, logout, getUserInfo }) => {
   let history = useHistory();
 
   useEffect(() => {
-    console.log("get token");
+    getUserInfo({
+      name: "Kaze",
+      roles: ["admin", "user", "guest"]
+    });
   }, [token]);
 
   const handleClickLogout = () => {
@@ -39,15 +49,15 @@ const PrivateLayout = ({ token, logout }) => {
         </li>
       </ul>
       <Switch>
-        <Route exact path="/">
-          dashboard
-        </Route>
-        <Route exact path="/other-page">
+        <PrivateRoute exact path="/other-page" name={routeName.OTHER_PAGE}>
           other page
-        </Route>
-        <Route exact path="/other-page-1">
+        </PrivateRoute>
+        <PrivateRoute exact path="/other-page-1" name={routeName.OTHER_PAGE_1}>
           other page 1
-        </Route>
+        </PrivateRoute>
+        <PrivateRoute exact path="/" name={routeName.DASHBOARD}>
+          dashboard
+        </PrivateRoute>
         <Route path="*">No match</Route>
       </Switch>
     </div>
@@ -61,7 +71,8 @@ const mapStateToProps = createStructuredSelector({
 });
 
 const mapDispatchToProps = {
-  logout
+  logout,
+  getUserInfo
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(PrivateLayout);
