@@ -6,3 +6,10 @@ export const login = payload => {
     payload
   };
 };
+
+export const logout = payload => {
+  return {
+    type: type.LOGOUT,
+    payload
+  };
+};

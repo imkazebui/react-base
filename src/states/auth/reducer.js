@@ -15,6 +15,12 @@ export default (state = initState, action) => {
         ...state,
         token: payload
       };
+    case types.LOGOUT:
+      localStorage.removeItem(localConstants.TOKEN);
+      return {
+        ...state,
+        token: null
+      };
     default:
       return state;
   }
