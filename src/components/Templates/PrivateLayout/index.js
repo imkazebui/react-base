@@ -25,7 +25,7 @@ const PrivateLayout = ({ token, logout, getUserInfo }) => {
   useEffect(() => {
     getUserInfo({
       name: "Kaze",
-      roles: ["admin", "user", "guest"]
+      roles: ["admin"]
     });
   }, [token]);
 

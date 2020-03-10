@@ -12,6 +12,7 @@ import {
 } from "react-router-dom";
 import { createStructuredSelector } from "reselect";
 import { selectToken, selectUserRoles } from "states/auth/selectors";
+import intersection from "lodash/intersection";
 
 import { routeName } from "components/Templates/PrivateLayout";
 
@@ -29,8 +30,6 @@ const getRolesAccessRoute = name => {
 };
 
 const PrivateRoute = ({ children, token, userRoles, name, ...rest }) => {
-  console.log("name", name);
-
   return (
     <Route
       {...rest}
@@ -62,14 +61,7 @@ const PrivateRoute = ({ children, token, userRoles, name, ...rest }) => {
           return children;
         }
 
-        let isAccess = false;
-        for (let i = 0; i < userRoles; i++) {
-          if (roleAccessRoute.includes(userRoles[i])) {
-            isAccess = true;
-
-            i = userRoles.length;
-          }
-        }
+        let isAccess = intersection(roleAccessRoute, userRoles).length > 0;
 
         if (isAccess) {
           return children;
