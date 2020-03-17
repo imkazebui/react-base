@@ -7,17 +7,13 @@ import {
   Link,
   useHistory
 } from "react-router-dom";
+import { Button } from "antd";
 import PropTypes from "prop-types";
 import { createStructuredSelector } from "reselect";
 import { selectToken } from "states/auth/selectors";
 import { logout, getUserInfo } from "states/auth/actions";
-import { PrivateRoute } from "components/Atoms";
 
-export const routeName = {
-  DASHBOARD: "DASHBOARD",
-  OTHER_PAGE: "OTHER_PAGE",
-  OTHER_PAGE_1: "OTHER_PAGE_1"
-};
+import renderRoutes from "routers/render";
 
 const PrivateLayout = ({ token, logout, getUserInfo }) => {
   let history = useHistory();
@@ -36,6 +32,9 @@ const PrivateLayout = ({ token, logout, getUserInfo }) => {
 
   return (
     <div>
+      {/* <header  />*/}
+      {/* <side bar /> */}
+      {/* <main /> */}
       <button onClick={handleClickLogout}>logout</button>
       <ul>
         <li>
@@ -49,15 +48,8 @@ const PrivateLayout = ({ token, logout, getUserInfo }) => {
         </li>
       </ul>
       <Switch>
-        <PrivateRoute exact path="/other-page" name={routeName.OTHER_PAGE}>
-          other page
-        </PrivateRoute>
-        <PrivateRoute exact path="/other-page-1" name={routeName.OTHER_PAGE_1}>
-          other page 1
-        </PrivateRoute>
-        <PrivateRoute exact path="/" name={routeName.DASHBOARD}>
-          dashboard
-        </PrivateRoute>
+        {renderRoutes(true)}
+
         <Route path="*">No match</Route>
       </Switch>
     </div>

@@ -14,7 +14,7 @@ import { createStructuredSelector } from "reselect";
 import { selectToken, selectUserRoles } from "states/auth/selectors";
 import intersection from "lodash/intersection";
 
-import { routeName } from "components/Templates/PrivateLayout";
+import * as routeName from "routers/route-name";
 
 const getRolesAccessRoute = name => {
   switch (name) {
@@ -22,8 +22,8 @@ const getRolesAccessRoute = name => {
       return [];
     case routeName.OTHER_PAGE:
       return ["admin"];
-    case routeName.OTHER_PAGE_1:
-      return ["admin", "user"];
+    // case routeName.OTHER_PAGE_1:
+    //   return ["admin", "user"];
     default:
       return null;
   }
@@ -43,6 +43,10 @@ const PrivateRoute = ({ children, token, userRoles, name, ...rest }) => {
               }}
             />
           );
+        }
+
+        if (name !== routeName.DASHBOARD && userRoles.length === 0) {
+          return null;
         }
 
         let roleAccessRoute = getRolesAccessRoute(name);

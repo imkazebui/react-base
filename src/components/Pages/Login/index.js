@@ -16,6 +16,8 @@ import PropTypes from "prop-types";
 
 import { Button, Input } from "components/Atoms";
 
+import "./styles.scss";
+
 const Login = ({ login }) => {
   let history = useHistory();
   let location = useLocation();
@@ -24,11 +26,12 @@ const Login = ({ login }) => {
 
   const onClickLogin = e => {
     login("token");
+
     history.replace(from);
   };
 
   return (
-    <div>
+    <div className="login-page">
       <p>You must log in to view the page at {from.pathname}</p>
       <Input />
       <Button name="login" onClick={onClickLogin} />

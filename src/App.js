@@ -1,21 +1,16 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-
 import { PrivateRoute } from "components/Atoms";
 import { PrivateLayout } from "components/Templates";
-import { LoginPage } from "components/Pages";
-
-import logo from "./logo.svg";
-import "./App.css";
+import renderRoutes from "routers/render";
+import * as routeName from "routers/route-name";
 
 function App() {
   return (
     <Router>
       <Switch>
-        <Route exact path="/login">
-          <LoginPage />
-        </Route>
-        <PrivateRoute path="/" name="DASHBOARD">
+        {renderRoutes()}
+        <PrivateRoute path="/" name={routeName.DASHBOARD}>
           <PrivateLayout />
         </PrivateRoute>
       </Switch>
