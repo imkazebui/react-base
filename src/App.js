@@ -1,6 +1,6 @@
-import React from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import { PrivateRoute } from "components/Atoms";
+import React, { Suspense } from "react";
+import { BrowserRouter as Router, Switch } from "react-router-dom";
+import { PrivateRoute, LoadingScreen } from "components/Atoms";
 import { PrivateLayout } from "components/Templates";
 import renderRoutes from "routers/render";
 import * as routeName from "routers/route-name";
@@ -8,12 +8,14 @@ import * as routeName from "routers/route-name";
 function App() {
   return (
     <Router>
-      <Switch>
-        {renderRoutes()}
-        <PrivateRoute path="/" name={routeName.DASHBOARD}>
-          <PrivateLayout />
-        </PrivateRoute>
-      </Switch>
+      <Suspense fallback={<LoadingScreen />}>
+        <Switch>
+          {renderRoutes()}
+          <PrivateRoute path="/" name={routeName.DASHBOARD}>
+            <PrivateLayout />
+          </PrivateRoute>
+        </Switch>
+      </Suspense>
     </Router>
   );
 }

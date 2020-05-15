@@ -15,7 +15,7 @@ const renderRoutes = (isPrivate = false) => {
   }
 
   return routes.map(({ component: Component, ...rest }, idx) => (
-    <Route {...rest} key={idx}>
+    <Route {...rest} key={idx} render={(props) => <Component {...props} />}>
       <Component />
     </Route>
   ));

@@ -1,12 +1,15 @@
+import React, { lazy } from "react";
+
 import * as routePath from "../route-path";
-import Login from "components/Pages/Login";
+
+const Login = lazy(() => import("components/Pages/Login"));
 
 const routes = [
   {
     path: routePath.LOGIN,
     component: Login,
-    exact: true
-  }
+    exact: true,
+  },
 ];
 
 export default routes;
