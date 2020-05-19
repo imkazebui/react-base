@@ -6,8 +6,9 @@ import {
   Link,
   Redirect,
   useHistory,
-  useLocation
+  useLocation,
 } from "react-router-dom";
+import { FormattedMessage } from "react-intl";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 import { selectToken } from "states/auth/selectors";
@@ -24,7 +25,7 @@ const Login = ({ login }) => {
 
   let { from } = location.state || { from: { pathname: "/" } };
 
-  const onClickLogin = e => {
+  const onClickLogin = (e) => {
     login("token");
 
     history.replace(from);
@@ -32,6 +33,9 @@ const Login = ({ login }) => {
 
   return (
     <div className="login-page">
+      <p>
+        <FormattedMessage id="app.name" defaultMessage="default message" />
+      </p>
       <p>You must log in to view the page at {from.pathname}</p>
       <Input />
       <Button name="login" onClick={onClickLogin} />
@@ -42,11 +46,11 @@ const Login = ({ login }) => {
 Login.propTypes = {};
 
 const mapStateToProps = createStructuredSelector({
-  token: selectToken()
+  token: selectToken(),
 });
 
 const mapDispatchToProps = {
-  login
+  login,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);
