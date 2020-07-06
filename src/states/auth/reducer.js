@@ -1,35 +1,31 @@
-import * as types from "./constants";
-import * as localConstants from "constants/local-storage";
+import { fromJS } from 'immutable';
 
-const initState = {
+import * as types from './constants';
+import * as localConstants from 'constants/local-storage';
+
+const initState = fromJS({
   token: localStorage.getItem(localConstants.TOKEN),
   userInfo: {
-    name: "",
-    roles: []
-  }
-};
+    name: '',
+    roles: [],
+  },
+});
 
 export default (state = initState, action) => {
   const { type, payload } = action;
 
   switch (type) {
     case types.LOGIN:
-      localStorage.setItem(localConstants.TOKEN, "token");
-      return {
-        ...state,
-        token: payload
-      };
+      localStorage.setItem(localConstants.TOKEN, 'token');
+      return state.setIn(['token'], payload);
+
     case types.LOGOUT:
       localStorage.removeItem(localConstants.TOKEN);
-      return {
-        ...state,
-        token: null
-      };
+      return state.setIn(['token'], null);
+
     case types.GET_USER_INFO:
-      return {
-        ...state,
-        userInfo: payload
-      };
+      return state.setIn(['userInfo'], payload);
+
     default:
       return state;
   }
