@@ -48,7 +48,10 @@ instance.interceptors.response.use(
           `?continue=${window.location.href}`;
         window.location.href = url;
         break;
+      case 403:
+      // todo
       default:
+        // other case
         break;
     }
 

@@ -1,2 +1,0 @@
-# react-base
-React base
