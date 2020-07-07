@@ -1,20 +1,10 @@
-import * as types from "./constants";
+import * as types from './constants';
 
-export const login = payload => {
-  return {
-    type: types.LOGIN,
-    payload
-  };
-};
-
-export const logout = payload => {
-  return {
-    type: types.LOGOUT,
-    payload
-  };
-};
-
-export const getUserInfo = payload => ({
+export const getUserInfo = () => ({
   type: types.GET_USER_INFO,
-  payload
+});
+
+export const saveUserInfo = (payload) => ({
+  type: types.SAVE_USER_INFO,
+  payload,
 });

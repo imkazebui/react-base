@@ -15,15 +15,8 @@ export default (state = initState, action) => {
   const { type, payload } = action;
 
   switch (type) {
-    case types.LOGIN:
-      localStorage.setItem(localConstants.TOKEN, 'token');
-      return state.setIn(['token'], payload);
-
-    case types.LOGOUT:
-      localStorage.removeItem(localConstants.TOKEN);
-      return state.setIn(['token'], null);
-
-    case types.GET_USER_INFO:
+    case types.SAVE_USER_INFO:
+      console.log('reducfer', payload);
       return state.setIn(['userInfo'], payload);
 
     default:

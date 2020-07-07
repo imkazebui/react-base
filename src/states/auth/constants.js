@@ -1,5 +1,4 @@
-export const STATE_NAME = "AUTH";
+export const STATE_NAME = 'AUTH';
 
-export const LOGIN = "LOGIN";
-export const LOGOUT = "LOGOUT";
-export const GET_USER_INFO = "GET_USER_INFOs";
+export const SAVE_USER_INFO = 'SAVE_USER_INFO';
+export const GET_USER_INFO = 'GET_USER_INFOs';

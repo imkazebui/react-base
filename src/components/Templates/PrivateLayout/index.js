@@ -11,31 +11,23 @@ import { Button, Result } from 'antd';
 import PropTypes from 'prop-types';
 import { createStructuredSelector } from 'reselect';
 import { selectToken } from 'states/auth/selectors';
-import { logout, getUserInfo } from 'states/auth/actions';
+import { getUserInfo } from 'states/auth/actions';
 
 import renderRoutes from 'routers/render';
 
-const PrivateLayout = ({ token, logout, getUserInfo }) => {
+const PrivateLayout = ({ token, getUserInfo }) => {
   let history = useHistory();
 
   useEffect(() => {
-    getUserInfo({
-      name: 'Kaze',
-      roles: ['admin'],
-    });
-  }, [token]);
-
-  const handleClickLogout = () => {
-    logout();
-    history.push('/login');
-  };
+    getUserInfo();
+  }, []);
 
   return (
     <div>
       {/* <header  />*/}
       {/* <side bar /> */}
       {/* <main /> */}
-      <button onClick={handleClickLogout}>logout</button>
+
       <ul>
         <li>
           <Link to='/'>Home</Link>
@@ -74,7 +66,6 @@ const mapStateToProps = createStructuredSelector({
 });
 
 const mapDispatchToProps = {
-  logout,
   getUserInfo,
 };
 
