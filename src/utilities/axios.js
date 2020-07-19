@@ -25,8 +25,10 @@ instance.interceptors.request.use(function (config) {
   }
 
   const language = Cookies.get(LANGUAGE) || 'en';
+
   config.headers.Authorization = token ? `Bearer ${token}` : '';
   config.headers['Accept-Language'] = language ? language : '';
+
   return config;
 });
 
