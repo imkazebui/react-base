@@ -1,23 +1,9 @@
-import React from "react";
-import { Button } from "antd";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  Redirect,
-  useHistory,
-  useLocation
-} from "react-router-dom";
-import { connect } from "react-redux";
-import { createStructuredSelector } from "reselect";
-import { selectToken } from "states/auth/selectors";
-import { login } from "states/auth/actions";
-import PropTypes from "prop-types";
+import React from 'react';
+import { Button } from 'antd';
 
-import "./styles.scss";
+import './styles.scss';
 
-const Dashboard = props => {
+const Dashboard = (props) => {
   return (
     <div className="dashboard">
       <Button type="primary">Primary</Button>

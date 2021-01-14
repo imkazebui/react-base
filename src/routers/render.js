@@ -1,9 +1,8 @@
-import React from "react";
-import { Route as RouteDom } from "react-router-dom";
-import { PrivateRoute } from "components/Atoms";
+import React from 'react';
+import { Route as RouteDom } from 'react-router-dom';
 
-import privateRoutes from "./private";
-import publicRoutes from "./public";
+import privateRoutes from './private';
+import publicRoutes from './public';
 
 const renderRoutes = (isPrivate = false) => {
   let routes = publicRoutes;
@@ -11,7 +10,6 @@ const renderRoutes = (isPrivate = false) => {
 
   if (isPrivate) {
     routes = privateRoutes;
-    Route = PrivateRoute;
   }
 
   return routes.map(({ component: Component, ...rest }, idx) => (

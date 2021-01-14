@@ -1,16 +1,14 @@
-import React, { lazy } from "react";
+import React, { lazy } from 'react';
 
-import * as routePath from "../route-path";
-import * as routeName from "../route-name";
+import * as routePath from '../route-path';
 
-const OtherPage = lazy(() => import("components/Pages/OtherPage"));
+const OtherPage = lazy(() => import('components/Pages/OtherPage'));
 
 const routes = [
   {
     path: routePath.OTHER_PAGE,
     component: OtherPage,
     exact: true,
-    name: routeName.OTHER_PAGE,
   },
 ];
 
