@@ -6,48 +6,44 @@ import {
   Link,
   useHistory,
 } from 'react-router-dom';
-import { Button, Result } from 'antd';
+import { Button, Result, Layout, Menu } from 'antd';
 import PropTypes from 'prop-types';
 
 import renderRoutes from 'routers/render';
+import { Sidebar, Header } from 'components/Organisms';
 
-const PrivateLayout = ({ token, getUserInfo }) => {
+import './styles.scss';
+
+const { Content } = Layout;
+
+const PrivateLayout = () => {
   let history = useHistory();
 
   return (
-    <div>
-      {/* <header  />*/}
-      {/* <side bar /> */}
-      {/* <main /> */}
+    <Layout id="private-layout">
+      <Sidebar />
+      <Layout id="site-layout">
+        <Header />
+        <Content id="site-content">
+          <Switch>
+            {renderRoutes(true)}
 
-      <ul>
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/other-page">other-page</Link>
-        </li>
-        <li>
-          <Link to="/other-page-1">other-page-1</Link>
-        </li>
-      </ul>
-      <Switch>
-        {renderRoutes(true)}
-
-        <Route path="*">
-          <Result
-            status="404"
-            title="PAGE NOT FOUND"
-            subTitle="Sorry, the page you visited does not exist."
-            extra={
-              <Button type="primary" onClick={() => history.replace('/')}>
-                Back Home
-              </Button>
-            }
-          />
-        </Route>
-      </Switch>
-    </div>
+            <Route path="*">
+              <Result
+                status="404"
+                title="PAGE NOT FOUND"
+                subTitle="Sorry, the page you visited does not exist."
+                extra={
+                  <Button type="primary" onClick={() => history.replace('/')}>
+                    Back Home
+                  </Button>
+                }
+              />
+            </Route>
+          </Switch>
+        </Content>
+      </Layout>
+    </Layout>
   );
 };
 

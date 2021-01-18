@@ -1,0 +1,9 @@
+#private-layout {
+  min-height: 100vh;
+
+  #site-layout {
+    #site-content {
+      height: calc(100vh - 64px);
+    }
+  }
+}
