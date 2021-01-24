@@ -11,19 +11,21 @@ function App() {
   const language = 'en';
 
   return (
-    <IntlProvider locale={language} messages={messages[language]}>
-      <Router>
-        <Suspense fallback={<LoadingScreen />}>
-          <Switch>
-            {renderRoutes()}
+    <React.StrictMode>
+      <IntlProvider locale={language} messages={messages[language]}>
+        <Router>
+          <Suspense fallback={<LoadingScreen />}>
+            <Switch>
+              {renderRoutes()}
 
-            <Route path="/">
-              <PrivateLayout />
-            </Route>
-          </Switch>
-        </Suspense>
-      </Router>
-    </IntlProvider>
+              <Route path="/">
+                <PrivateLayout />
+              </Route>
+            </Switch>
+          </Suspense>
+        </Router>
+      </IntlProvider>
+    </React.StrictMode>
   );
 }
 
