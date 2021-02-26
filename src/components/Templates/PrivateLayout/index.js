@@ -5,6 +5,7 @@ import {
   Route,
   Link,
   useHistory,
+  Redirect,
 } from 'react-router-dom';
 import { Button, Result, Layout, Menu } from 'antd';
 import PropTypes from 'prop-types';
@@ -27,6 +28,8 @@ const PrivateLayout = () => {
         <Content id="site-content">
           <Switch>
             {renderRoutes(true)}
+
+            <Redirect from="/" to="/login" />
 
             <Route path="*">
               <Result

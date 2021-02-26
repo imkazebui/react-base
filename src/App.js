@@ -8,6 +8,8 @@ import { QueryClientProvider, QueryClient } from 'react-query';
 
 import messages from 'translations';
 
+import Login from 'modules/auth/Login';
+
 const queryClient = new QueryClient();
 
 function App() {
@@ -21,6 +23,10 @@ function App() {
             <Suspense fallback={<LoadingScreen />}>
               <Switch>
                 {renderRoutes()}
+
+                <Route path="/login">
+                  <Login />
+                </Route>
 
                 <Route path="/">
                   <PrivateLayout />

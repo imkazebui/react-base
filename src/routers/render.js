@@ -1,8 +1,8 @@
 import React from 'react';
 import { Route as RouteDom } from 'react-router-dom';
 
-import privateRoutes from './private';
-import publicRoutes from './public';
+const privateRoutes = [];
+const publicRoutes = [];
 
 const renderRoutes = (isPrivate = false) => {
   let routes = publicRoutes;
