@@ -1,8 +1,9 @@
 import axios from 'utilities/axios';
 
+const apiBase = 'users';
+
 const apiUrl = {
-  base: 'users',
-  login: this.base + '/login',
+  login: apiBase + '/login',
 };
 
 export const login = async (payload) => {

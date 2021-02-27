@@ -15,7 +15,7 @@ const Login = () => {
       <Col span="6" className="login-wrapper">
         <h1>Login</h1>
         <Form layout="vertical" onFinish={onSubmit}>
-          <FormInput formProps={{ label: 'Username', name: 'username' }} />
+          <FormInput formProps={{ label: 'Username', name: 'email' }} />
           <FormInput
             formProps={{ label: 'Password', name: 'password' }}
             type="password"

@@ -3,7 +3,6 @@ import Cookies from 'js-cookie';
 import NProgress from 'nprogress';
 import API_DOMAIN from 'constants/api';
 import { LANGUAGE, TOKEN } from 'constants/cookies';
-import { isLocalHost } from 'utilities/url';
 
 import 'nprogress/nprogress.css';
 
@@ -19,10 +18,6 @@ instance.interceptors.request.use(function (config) {
   NProgress.start();
 
   let token = Cookies.get(TOKEN);
-
-  if (isLocalHost) {
-    token = localStorage.getItem(TOKEN);
-  }
 
   const language = Cookies.get(LANGUAGE) || 'en';
 
