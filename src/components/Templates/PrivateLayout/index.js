@@ -10,7 +10,7 @@ import {
 import { Button, Result, Layout, Menu } from 'antd';
 import PropTypes from 'prop-types';
 
-import renderRoutes from 'routers/render';
+import renderRoutes from 'routers';
 import { Sidebar, Header } from 'components/Organisms';
 
 import './styles.scss';
@@ -28,8 +28,6 @@ const PrivateLayout = () => {
         <Content id="site-content">
           <Switch>
             {renderRoutes(true)}
-
-            <Redirect from="/" to="/login" />
 
             <Route path="*">
               <Result

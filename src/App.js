@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { IntlProvider } from 'react-intl';
 import { PrivateRoute, LoadingScreen } from 'components/Atoms';
 import { PrivateLayout } from 'components/Templates';
-import renderRoutes from 'routers/render';
+import renderRoutes from 'routers';
 import { QueryClientProvider, QueryClient } from 'react-query';
 
 import messages from 'translations';
@@ -24,14 +24,6 @@ function App() {
             <Suspense fallback={<LoadingScreen />}>
               <Switch>
                 {renderRoutes()}
-
-                <Route path="/login">
-                  <Login />
-                </Route>
-
-                <Route path="/staff">
-                  <StaffList />
-                </Route>
 
                 <Route path="/">
                   <PrivateLayout />

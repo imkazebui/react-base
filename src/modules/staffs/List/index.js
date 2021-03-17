@@ -2,17 +2,25 @@ import React from 'react';
 import { Row, Col } from 'antd';
 import { Button, Input, Select, Table } from 'components/Atoms';
 
+import useList from './useList';
+
 const List = () => {
+  const { staffs } = useList();
+
+  if (staffs.status === 'loading') return null;
+
   return (
-    <Col>
-      <Row>
-        <Col>Staff</Col>
-        <Col>
+    <Col span={24}>
+      <Row span="24" gutter="16">
+        <Col span="12">Staff</Col>
+        <Col span="12">
           <Button>New Staff</Button>
         </Col>
       </Row>
-      <Row>
-        <Col>
+      <br />
+
+      <Row span="24" gutter="16">
+        <Col span>
           <Input placeholder="Search staffs" />
         </Col>
         <Col>
@@ -26,40 +34,33 @@ const List = () => {
           />
         </Col>
       </Row>
-      <Row>
-        <Table
-          dataSource={[
-            {
-              key: '1',
-              name: 'Mike',
-              age: 32,
-              address: '10 Downing Street',
-            },
-            {
-              key: '2',
-              name: 'John',
-              age: 42,
-              address: '10 Downing Street',
-            },
-          ]}
-          columns={[
-            {
-              title: 'Name',
-              dataIndex: 'name',
-              key: 'name',
-            },
-            {
-              title: 'Age',
-              dataIndex: 'age',
-              key: 'age',
-            },
-            {
-              title: 'Address',
-              dataIndex: 'address',
-              key: 'address',
-            },
-          ]}
-        />
+
+      <br />
+      <Row gutter="16" span="24">
+        <Col span="24">
+          <Table
+            rowKey="id"
+            pagination={false}
+            dataSource={staffs.data?.items}
+            columns={[
+              {
+                title: 'Fullname',
+                dataIndex: 'firstName',
+                key: 'firstName',
+              },
+              {
+                title: 'Email',
+                dataIndex: 'email',
+                key: 'email',
+              },
+              {
+                title: 'Status',
+                dataIndex: 'isActive',
+                key: 'isActive',
+              },
+            ]}
+          />
+        </Col>
       </Row>
     </Col>
   );
