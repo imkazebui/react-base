@@ -1,0 +1,9 @@
+#react-base {
+  .custom-select {
+    min-width: 150px;
+
+    &.full-width {
+      width: 100%;
+    }
+  }
+}

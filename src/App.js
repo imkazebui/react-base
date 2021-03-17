@@ -8,7 +8,8 @@ import { QueryClientProvider, QueryClient } from 'react-query';
 
 import messages from 'translations';
 
-import Login from 'modules/auth/Login';
+import { Login } from 'modules/auth';
+import { StaffList } from 'modules/staffs';
 
 const queryClient = new QueryClient();
 
@@ -26,6 +27,10 @@ function App() {
 
                 <Route path="/login">
                   <Login />
+                </Route>
+
+                <Route path="/staff">
+                  <StaffList />
                 </Route>
 
                 <Route path="/">
