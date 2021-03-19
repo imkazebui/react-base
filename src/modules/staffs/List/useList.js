@@ -12,10 +12,24 @@ const useList = () => {
     type: 'Portal',
   });
 
-  const staffs = useQuery('staff', () => getStaffList(searchParams));
+  const staffs = useQuery(
+    ['staff', searchParams],
+    () => getStaffList(searchParams),
+    {
+      keepPreviousData: true,
+    }
+  );
+
+  const handleChangeSearch = ({ target }) => {
+    setSearchParams({
+      ...searchParams,
+      terms: target.value,
+    });
+  };
 
   return {
     staffs,
+    handleChangeSearch,
   };
 };
 

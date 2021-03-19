@@ -5,9 +5,7 @@ import { Button, Input, Select, Table } from 'components/Atoms';
 import useList from './useList';
 
 const List = () => {
-  const { staffs } = useList();
-
-  if (staffs.status === 'loading') return null;
+  const { staffs, handleChangeSearch } = useList();
 
   return (
     <Col span={24}>
@@ -21,7 +19,7 @@ const List = () => {
 
       <Row span="24" gutter="16">
         <Col span>
-          <Input placeholder="Search staffs" />
+          <Input placeholder="Search staffs" onChange={handleChangeSearch} />
         </Col>
         <Col>
           <Select
