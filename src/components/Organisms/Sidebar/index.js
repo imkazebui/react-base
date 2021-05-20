@@ -19,17 +19,16 @@ const Sidebar = () => {
   return (
     <Sider id="site-sidebar" trigger={null} collapsible collapsed={false}>
       <div className="logo">NhatNguyet</div>
-
-      <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
-        <Menu.Item key="1" icon={<UserOutlined />} onClick={onClick('/user')}>
-          User
-        </Menu.Item>
+      <Menu theme="dark" mode="inline" defaultSelectedKeys={['2']}>
         <Menu.Item
           key="2"
           icon={<VideoCameraOutlined />}
-          onClick={onClick('/detect')}
+          onClick={onClick('/')}
         >
           Detect History
+        </Menu.Item>
+        <Menu.Item key="1" icon={<UserOutlined />} onClick={onClick('/user')}>
+          User
         </Menu.Item>
         <Menu.Item
           key="3"
