@@ -20,7 +20,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build'",
+    "build": "react-scripts build",
     "start-dev": "cp .env.local .env && PORT=3001 react-scripts start",
     "build-c": "sh -ac '. .env.${REACT_APP_ENV}; react-scripts build'",
     "build:dev": "REACT_APP_ENV=dev npm run build",
