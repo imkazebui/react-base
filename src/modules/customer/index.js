@@ -17,7 +17,7 @@ const tailLayout = {
   },
 };
 
-const User = () => {
+const User = ({ isMobile }) => {
   const [form] = Form.useForm();
   const [data, setData] = useState({
     emailPrimary: '',
@@ -84,7 +84,7 @@ const User = () => {
           <Button type="primary" onClick={handleAddEmail}>
             Add Email
           </Button>
-          <p>{`      `}</p>
+          <span>{`      `}</span>
           <Button type="primary" htmlType="submit">
             Save
           </Button>

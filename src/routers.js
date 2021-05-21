@@ -6,7 +6,23 @@ const DetectPage = lazy(() => import('modules/detect'));
 const UserPage = lazy(() => import('modules/customer'));
 const ReportPage = lazy(() => import('modules/report'));
 
-const publicRoutes = [...loginRoutes];
+const publicRoutes = [
+  // {
+  //   component: DetectPage,
+  //   exact: true,
+  //   path: '/',
+  // },
+  {
+    component: UserPage,
+    exact: true,
+    path: '/mobile/user',
+  },
+  {
+    component: ReportPage,
+    exact: true,
+    path: '/mobile/report',
+  },
+];
 const privateRoutes = [
   {
     component: DetectPage,
@@ -25,9 +41,6 @@ const privateRoutes = [
   },
 ];
 
-const checkValidRole = (roles = [], useRole = '') =>
-  roles.length > 0 ? roles.includes(useRole) : true;
-
 const renderRoutes = (isPrivate = false, userRole = '') => {
   let routes = publicRoutes;
   let Route = RouteDom;
@@ -36,8 +49,12 @@ const renderRoutes = (isPrivate = false, userRole = '') => {
     routes = privateRoutes;
   }
   return routes.map(({ component: Component, roles, ...rest }, idx) => (
-    <Route {...rest} key={idx} render={(props) => <Component {...props} />}>
-      <Component />
+    <Route
+      {...rest}
+      key={idx}
+      render={(props) => <Component {...props} isMobile={!isPrivate} />}
+    >
+      <Component isMobile={!isPrivate} />
     </Route>
   ));
 };

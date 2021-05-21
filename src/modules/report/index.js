@@ -31,7 +31,7 @@ const renderCustomizedLabel = ({
   );
 };
 
-const Report = () => {
+const Report = ({ isMobile }) => {
   const [data, setData] = useState([
     {
       name: 'Correct',
@@ -75,9 +75,15 @@ const Report = () => {
     getList();
   }, []);
 
+  const styles = isMobile
+    ? { width: '100vw', height: '100vh' }
+    : { width: '400px', height: '200px' };
+
+  console.log('isMobile', isMobile);
+
   return (
-    <>
-      <p>Report</p>
+    <div style={styles}>
+      <h1>Report</h1>
       <ResponsiveContainer width="100%" height="100%">
         <PieChart width={400} height={400}>
           <Tooltip />
@@ -102,7 +108,7 @@ const Report = () => {
           </Pie>
         </PieChart>
       </ResponsiveContainer>
-    </>
+    </div>
   );
 };
 
