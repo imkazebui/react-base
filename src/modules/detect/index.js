@@ -16,7 +16,7 @@ const Detect = ({ isMobile }) => {
   useEffect(() => {
     getList();
 
-    const interval = setInterval(() => getList(), 5000000000000);
+    const interval = setInterval(() => getList(), 5000);
     return () => {
       clearInterval(interval);
     };
