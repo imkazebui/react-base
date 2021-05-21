@@ -7,11 +7,11 @@ const UserPage = lazy(() => import('modules/customer'));
 const ReportPage = lazy(() => import('modules/report'));
 
 const publicRoutes = [
-  // {
-  //   component: DetectPage,
-  //   exact: true,
-  //   path: '/',
-  // },
+  {
+    component: DetectPage,
+    exact: true,
+    path: '/mobile/detect',
+  },
   {
     component: UserPage,
     exact: true,

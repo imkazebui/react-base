@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'utilities/axios';
-import { Table, Tag, Select } from 'antd';
+import { Table, Tag, Select, Card } from 'antd';
 
 const { Option } = Select;
+const { Meta } = Card;
 
-const Detect = () => {
+const Detect = ({ isMobile }) => {
   const [data, setData] = useState([]);
 
   const getList = async () => {
@@ -30,7 +31,14 @@ const Detect = () => {
       title: 'Image',
       dataIndex: 'images',
       key: 'image',
-      render: (data) => <img alt="img" src={`data:image/png;base64,${data}`} />,
+      render: (data) => (
+        <img
+          alt="img"
+          src={`data:image/png;base64,${data}`}
+          width="200"
+          height="200"
+        />
+      ),
     },
     {
       title: 'Detect',
@@ -75,6 +83,25 @@ const Detect = () => {
       ),
     },
   ];
+
+  if (isMobile) {
+    return data.map((d, idx) => (
+      <Card
+        key={idx}
+        hoverable
+        cover={<img alt="example" src={`data:image/png;base64,${d.images}`} />}
+      >
+        <p>
+          {d.name} -{' '}
+          <Tag color={d.isStranger ? 'red' : 'blue'}>
+            {d.isStranger ? 'Stranger' : 'Family'}
+          </Tag>
+          - {d.node}
+        </p>
+        <p>Datetime: {d.dateTime}</p>
+      </Card>
+    ));
+  }
 
   return <Table dataSource={data} columns={columns} rowKey="_id" />;
 };

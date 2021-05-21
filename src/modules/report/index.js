@@ -79,8 +79,6 @@ const Report = ({ isMobile }) => {
     ? { width: '100vw', height: '100vh' }
     : { width: '400px', height: '200px' };
 
-  console.log('isMobile', isMobile);
-
   return (
     <div style={styles}>
       <h1>Report</h1>
