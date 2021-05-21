@@ -3,6 +3,7 @@ import { Route as RouteDom } from 'react-router-dom';
 
 import { loginRoutes } from 'modules/auth/routes';
 const DetectPage = lazy(() => import('modules/detect'));
+const UserPage = lazy(() => import('modules/customer'));
 
 const publicRoutes = [...loginRoutes];
 const privateRoutes = [
@@ -10,6 +11,11 @@ const privateRoutes = [
     component: DetectPage,
     exact: true,
     path: '/',
+  },
+  {
+    component: UserPage,
+    exact: true,
+    path: '/user',
   },
 ];
 

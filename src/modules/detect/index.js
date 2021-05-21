@@ -9,12 +9,12 @@ const Detect = () => {
 
   const getList = async () => {
     const { data } = await axios.get('/detect-face');
-    // setData(data);
-    console.log('data', data);
     setData(data.data);
   };
 
   useEffect(() => {
+    getList();
+
     const interval = setInterval(() => getList(), 5000000000000);
     return () => {
       clearInterval(interval);
