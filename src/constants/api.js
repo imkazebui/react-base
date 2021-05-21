@@ -1,4 +1,4 @@
-const API_DOMAIN = process.env.REACT_APP_API_ROOT;
+const API_DOMAIN = 'https://warm-sea-62032.herokuapp.com/api';
 export default API_DOMAIN;
 
 export const API = {
