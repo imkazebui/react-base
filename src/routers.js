@@ -4,6 +4,7 @@ import { Route as RouteDom } from 'react-router-dom';
 import { loginRoutes } from 'modules/auth/routes';
 const DetectPage = lazy(() => import('modules/detect'));
 const UserPage = lazy(() => import('modules/customer'));
+const ReportPage = lazy(() => import('modules/report'));
 
 const publicRoutes = [...loginRoutes];
 const privateRoutes = [
@@ -16,6 +17,11 @@ const privateRoutes = [
     component: UserPage,
     exact: true,
     path: '/user',
+  },
+  {
+    component: ReportPage,
+    exact: true,
+    path: '/report',
   },
 ];
 
