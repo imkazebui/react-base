@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'utilities/axios';
-import { Table, Tag } from 'antd';
+import { Table, Tag, Select } from 'antd';
+
+const { Option } = Select;
 
 const Detect = () => {
   const [data, setData] = useState([]);
@@ -13,14 +15,22 @@ const Detect = () => {
   };
 
   useEffect(() => {
-    getList();
+    const interval = setInterval(() => getList(), 5000000000000);
+    return () => {
+      clearInterval(interval);
+    };
   }, []);
+
+  const handleChangeCorrect = (id) => (isCorrect) => {
+    axios.put(`/detect-face/${id}`, { isCorrect });
+  };
 
   const columns = [
     {
       title: 'Image',
       dataIndex: 'images',
       key: 'image',
+      render: (data) => <img alt="img" src={`data:image/png;base64,${data}`} />,
     },
     {
       title: 'Detect',
@@ -48,7 +58,21 @@ const Detect = () => {
 
     {
       title: 'Correct',
-      key: 'correct',
+      key: 'isCorrect',
+      dataIndex: 'isCorrect',
+      render: (data, row) => (
+        <Select
+          defaultValue={data}
+          style={{ width: 120 }}
+          onChange={handleChangeCorrect(row._id)}
+        >
+          <Option value="false">InCorrect</Option>
+          <Option value="true">Correct</Option>
+          <Option value="null" disabled>
+            Unknow
+          </Option>
+        </Select>
+      ),
     },
   ];
 
