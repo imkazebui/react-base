@@ -75,8 +75,6 @@ const Report = () => {
     getList();
   }, []);
 
-  console.log('data', data);
-
   return (
     <>
       <p>Report</p>

@@ -19,7 +19,8 @@
     "redux-devtools-extension": "^2.13.8"
   },
   "scripts": {
-    "start": "cp .env.local .env && PORT=3001 react-scripts start",
+    "start": "PORT=process.env.PORT react-scripts start",
+    "start-dev": "cp .env.local .env && PORT=3001 react-scripts start",
     "build": "sh -ac '. .env.${REACT_APP_ENV}; react-scripts build'",
     "build:dev": "REACT_APP_ENV=dev npm run build",
     "build:staging": "REACT_APP_ENV=staging npm run build",
