@@ -5,7 +5,7 @@ export const routePath = {
   login: '/login',
 };
 
-export const loginRoutes = [
+export const routes = [
   {
     path: routePath.login,
     component: Login,

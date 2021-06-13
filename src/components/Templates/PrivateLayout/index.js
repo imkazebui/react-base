@@ -27,7 +27,11 @@ const PrivateLayout = () => {
         <Header />
         <Content id="site-content">
           <Switch>
-            {renderRoutes(true)}
+            {renderRoutes('private-layout')}
+
+            {/* <Route exact path="/">
+                <Redirect to={routePath.TEAM} />
+              </Route> */}
 
             <Route path="*">
               <Result

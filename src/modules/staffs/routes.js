@@ -5,7 +5,7 @@ export const routePath = {
   staff: '/staff',
 };
 
-export const staffRoutes = [
+export const routes = [
   {
     path: routePath.STAFF,
     component: StaffManagement,

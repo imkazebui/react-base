@@ -4,6 +4,8 @@ import NProgress from 'nprogress';
 import API_DOMAIN from 'constants/api';
 import { LANGUAGE, TOKEN } from 'constants/cookies';
 
+import { authPath } from 'modules/auth';
+
 import 'nprogress/nprogress.css';
 
 let requestsCounter = 0;
@@ -56,9 +58,7 @@ instance.interceptors.response.use(
 
     switch (status) {
       case 401:
-        const url =
-          process.env.REACT_APP_LOGIN_DOMAIN +
-          `?continue=${window.location.href}`;
+        const url = authPath.login + `?continue=${window.location.href}`;
         window.location.href = url;
         break;
       case 403:

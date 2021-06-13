@@ -1,17 +1,14 @@
 import React, { Suspense, useEffect, useState } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { IntlProvider } from 'react-intl';
-import { PrivateRoute, LoadingScreen } from 'components/Atoms';
+import { LoadingScreen } from 'components/Atoms';
 import { PrivateLayout } from 'components/Templates';
 import renderRoutes from 'routers';
-import { QueryClientProvider, QueryClient } from 'react-query';
+import { QueryClientProvider } from 'react-query';
+
+import queryClient from 'utilities/queryClient';
 
 import messages from 'translations';
-
-import { Login } from 'modules/auth';
-import { StaffList } from 'modules/staffs';
-
-const queryClient = new QueryClient();
 
 function App() {
   const language = 'en';
@@ -24,6 +21,7 @@ function App() {
             <Suspense fallback={<LoadingScreen />}>
               <Switch>
                 {renderRoutes()}
+                {renderRoutes('other-private')}
 
                 <Route path="/">
                   <PrivateLayout />
