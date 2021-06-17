@@ -1,3 +1,4 @@
+import { useDebounce } from 'hooks';
 import { useState } from 'react';
 
 import { useGetStaffList } from './queries';
@@ -11,7 +12,8 @@ const useList = () => {
     type: 'Portal',
   });
 
-  const { data: staffs } = useGetStaffList(searchParams);
+  const searchPayload = useDebounce(searchParams, 500);
+  const { data: staffs } = useGetStaffList(searchPayload);
 
   const handleChangeSearch = ({ target }) => {
     setSearchParams({
