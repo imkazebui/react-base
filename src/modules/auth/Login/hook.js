@@ -1,18 +1,17 @@
 import { useCallback } from 'react';
-import { useQuery, useMutation } from 'react-query';
 import { useHistory } from 'react-router-dom';
 import Cookies from 'js-cookie';
-import { LANGUAGE, TOKEN } from 'constants/cookies';
+import { TOKEN } from 'constants/cookies';
 
-import { login } from '../services';
+import { useLogin } from './queries';
 
-const useLogin = () => {
+const useHook = () => {
   const history = useHistory();
-  const mutation = useMutation(login);
+  const login = useLogin();
 
   const onSubmit = useCallback((values) => {
-    mutation.mutate(values, {
-      onSuccess: (data, variables, context) => {
+    login.mutate(values, {
+      onSuccess: (data) => {
         Cookies.set(TOKEN, data.accessToken);
         history.push('/staff');
       },
@@ -27,4 +26,4 @@ const useLogin = () => {
   };
 };
 
-export default useLogin;
+export default useHook;
