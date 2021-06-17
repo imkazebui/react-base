@@ -1,7 +1,6 @@
 import { useState } from 'react';
-import { useQuery, useMutation } from 'react-query';
 
-import { getStaffList } from '../services';
+import { useGetStaffList } from './queries';
 
 const useList = () => {
   const [searchParams, setSearchParams] = useState({
@@ -12,13 +11,7 @@ const useList = () => {
     type: 'Portal',
   });
 
-  const staffs = useQuery(
-    ['staff', searchParams],
-    () => getStaffList(searchParams),
-    {
-      keepPreviousData: true,
-    }
-  );
+  const { data: staffs } = useGetStaffList(searchParams);
 
   const handleChangeSearch = ({ target }) => {
     setSearchParams({

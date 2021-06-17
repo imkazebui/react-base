@@ -2,10 +2,12 @@ import React from 'react';
 import { Row, Col } from 'antd';
 import { Button, Input, Select, Table } from 'components/Atoms';
 
-import useList from './useList';
+import useList from './hook';
 
 const List = () => {
   const { staffs, handleChangeSearch } = useList();
+
+  console.log('staff', staffs);
 
   return (
     <Col span={24}>
@@ -39,7 +41,7 @@ const List = () => {
           <Table
             rowKey="id"
             pagination={false}
-            dataSource={staffs.data?.items}
+            dataSource={staffs?.items}
             columns={[
               {
                 title: 'Fullname',

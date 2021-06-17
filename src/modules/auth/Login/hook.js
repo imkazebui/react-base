@@ -10,15 +10,19 @@ const useHook = () => {
   const login = useLogin();
 
   const onSubmit = useCallback((values) => {
-    login.mutate(values, {
-      onSuccess: (data) => {
-        Cookies.set(TOKEN, data.accessToken);
-        history.push('/staff');
-      },
-      onError: (error, variables, context) => {
-        // I will fire second!
-      },
-    });
+    login.mutate(
+      { ...values, systemType: 'Portal' },
+      {
+        onSuccess: ({ data }) => {
+          console.log('data', data);
+          Cookies.set(TOKEN, data.accessToken);
+          history.push('/staff');
+        },
+        onError: (error, variables, context) => {
+          // I will fire second!
+        },
+      }
+    );
   }, []);
 
   return {
