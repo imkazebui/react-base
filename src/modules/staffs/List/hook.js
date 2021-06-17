@@ -1,5 +1,5 @@
-import { useDebounce } from 'hooks';
 import { useState } from 'react';
+import debounce from 'lodash.debounce';
 
 import { useGetStaffList } from './queries';
 
@@ -12,15 +12,14 @@ const useList = () => {
     type: 'Portal',
   });
 
-  const searchPayload = useDebounce(searchParams, 500);
-  const { data: staffs } = useGetStaffList(searchPayload);
+  const { data: staffs } = useGetStaffList(searchParams);
 
-  const handleChangeSearch = ({ target }) => {
+  const handleChangeSearch = debounce(({ target }) => {
     setSearchParams({
       ...searchParams,
       terms: target.value,
     });
-  };
+  }, 500);
 
   return {
     staffs,

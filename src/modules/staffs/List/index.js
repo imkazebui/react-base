@@ -7,8 +7,6 @@ import useList from './hook';
 const List = () => {
   const { staffs, handleChangeSearch } = useList();
 
-  console.log('staff', staffs);
-
   return (
     <Col span={24}>
       <Row span="24" gutter="16">
