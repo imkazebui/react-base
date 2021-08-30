@@ -1,3 +1,3 @@
-import PrivateLayout from "./PrivateLayout";
-
-export { PrivateLayout };
+export { default as PrivateLayout } from './PrivateLayout';
+export { default as withStripe } from './withStripe';
+export { default as withCart } from './withCart';
