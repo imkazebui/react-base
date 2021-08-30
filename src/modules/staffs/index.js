@@ -1,3 +1,1 @@
-import { routePath as staffPath, routes as staffRoutes } from './routes';
-
-export { staffPath, staffRoutes };
+export { routePath as staffPath, routes as staffRoutes } from './routes';

@@ -1,4 +1,6 @@
 import { lazy } from 'react';
+import { CaretDownOutlined, CaretUpOutlined } from '@ant-design/icons';
+
 const StaffManagement = lazy(() => import('./List'));
 
 export const routePath = {
@@ -7,11 +9,11 @@ export const routePath = {
 
 export const routes = [
   {
-    path: routePath.STAFF,
+    path: routePath.staff,
     component: StaffManagement,
     exact: true,
     name: 'Staff',
     showMenu: true,
-    icon: <span>hello</span>,
+    icon: CaretDownOutlined,
   },
 ];

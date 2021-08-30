@@ -4,7 +4,7 @@ import Cookies from 'js-cookie';
 import { TOKEN } from 'constants/cookies';
 import { routePath } from './routes';
 
-import { useLogin } from './Login/queries';
+import { useLogin } from './queries';
 
 export const useHook = () => {
   const history = useHistory();
