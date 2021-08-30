@@ -3,7 +3,7 @@ import { Form, Col } from 'antd';
 
 import { FormInput, FormButton } from 'components/Molecules';
 
-import { useAuth } from '../hook';
+import { useAuth } from '../index';
 
 import './styles.scss';
 

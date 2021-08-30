@@ -6,7 +6,7 @@ import { routePath } from './routes';
 
 import { useLogin } from './Login/queries';
 
-export const useAuth = () => {
+export const useHook = () => {
   const history = useHistory();
   const login = useLogin();
 
