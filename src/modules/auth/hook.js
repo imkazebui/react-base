@@ -2,10 +2,11 @@ import { useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import { TOKEN } from 'constants/cookies';
+import { routePath } from './routes';
 
-import { useLogin } from './queries';
+import { useLogin } from './Login/queries';
 
-const useHook = () => {
+export const useAuth = () => {
   const history = useHistory();
   const login = useLogin();
 
@@ -14,8 +15,10 @@ const useHook = () => {
       { ...values, systemType: 'Portal' },
       {
         onSuccess: ({ data }) => {
-          console.log('data', data);
           Cookies.set(TOKEN, data.accessToken);
+          Cookies.set(TOKEN, data.accessToken, {
+            domain: `.${process.env.REACT_APP_HOST_NAME}`,
+          });
           history.push('/staff');
         },
         onError: (error, variables, context) => {
@@ -25,9 +28,16 @@ const useHook = () => {
     );
   }, []);
 
+  const handleLogout = () => {
+    Cookies.remove(TOKEN);
+    Cookies.remove(TOKEN, {
+      domain: `.${process.env.REACT_APP_HOST_NAME}`,
+    });
+    history.push(routePath.login);
+  };
+
   return {
     onSubmit,
+    handleLogout,
   };
 };
-
-export default useHook;
