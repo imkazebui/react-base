@@ -1,0 +1,21 @@
+.ant-back-top {
+  right: 85px;
+  bottom: 24px !important;
+  position: fixed;
+  @media screen and (max-width: 600px) {
+    right: 30px;
+  }
+  .wrapper-back-top-btn {
+    height: 40px;
+    width: 40px;
+    // background-color: $primary-color;
+    box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    svg {
+      // color: $neutral-wht;
+    }
+  }
+}

@@ -1,0 +1,35 @@
+// @import 'assets/css/mixin';
+
+.dragger-wrapper {
+  background-color: transparent;
+
+  .ant-upload.ant-upload-btn {
+    padding: 0px;
+  }
+  .plus-icon {
+    width: 24px;
+    height: 24px;
+    // color: $dark-gray;
+  }
+  .drag-text {
+    // @include text-base(600, 18px, $dark-gray);
+    .browse {
+      // color: $accent-color;
+    }
+  }
+  .text-desc {
+    // @include text-base(500, 16px, $dark-gray);
+  }
+
+  .ant-form-item .ant-upload.ant-upload-drag {
+    background: transparent;
+  }
+}
+
+.ant-upload.ant-upload-drag {
+  &.dragger-wrapper {
+    border: 2px dashed #cacfd3;
+    border-radius: 10px;
+    padding: 20px;
+  }
+}

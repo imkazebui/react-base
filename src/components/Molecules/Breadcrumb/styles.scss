@@ -1,0 +1,17 @@
+#react-base {
+  .breadcrumb-wrapper {
+    a {
+      &:hover {
+        // color: $brand-color !important;
+      }
+    }
+    .my-breadcrumb-item {
+      // color: $dark-gray;
+      letter-spacing: 0.02px;
+      line-height: 18px;
+      &.active {
+        // color: $primary-color;
+      }
+    }
+  }
+}

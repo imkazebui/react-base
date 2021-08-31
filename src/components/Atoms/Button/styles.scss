@@ -1,0 +1,14 @@
+// @import 'assets/css/variables.scss';
+
+#react-base {
+  .site-button {
+    &:not(.my-btn-no-style) {
+      border-radius: 50px;
+    }
+    &.ant-btn-primary {
+      // background: $brand-color;
+      // border-color: $brand-color;
+      // color: $white;
+    }
+  }
+}

@@ -1,7 +1,8 @@
-import { LoadingScreen } from './Spin';
-import Input from './Input';
-import Button from './Button';
-import Select from './Select';
-import Table from './Table';
-
-export { LoadingScreen, Input, Button, Select, Table };
+export { LoadingScreen } from './Spin';
+export { default as Input } from './Input';
+export { default as Button } from './Button';
+export { default as Select } from './Select';
+export { default as Table } from './Table';
+export { default as Alert } from './Alert';
+export { default as BackTop } from './BackTop';
+export { default as Dragger } from './Dragger';
