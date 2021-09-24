@@ -8,6 +8,8 @@
     "antd": "^4.10.3",
     "axios": "^0.21.1",
     "classnames": "^2.2.6",
+    "grapesjs": "^0.17.26",
+    "grapesjs-blocks-basic": "^0.1.8",
     "immutable": "^4.0.0-rc.14",
     "js-cookie": "^2.2.1",
     "lodash.debounce": "^4.0.8",
