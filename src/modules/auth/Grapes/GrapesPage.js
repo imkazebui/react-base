@@ -8,6 +8,10 @@ import gjsBasicBlocks from 'grapesjs-blocks-basic';
 
 import 'grapesjs/dist/css/grapes.min.css';
 import './styles.scss';
+import Tagify from '@yaireo/tagify'
+import '@yaireo/tagify/dist/tagify.css';
+import '@yaireo/tagify/dist/tagify.polyfills.min.js'
+
 
 const CustomImage = (editor) => {
   editor.DomComponents.addType('custom-img', {
@@ -79,6 +83,7 @@ const GrapesPage = () => {
       <div>
         <input id="custom-img-href"></input>
         <input id="custom-img-src"></input>
+        <input id="tag" placeholder="tags" />
       </div>
     );
 
@@ -98,6 +103,31 @@ const GrapesPage = () => {
             });
           });
 
+        var input = document.getElementById('tag');
+        var tagify = new Tagify(input, { whitelist: [] });
+        tagify.on('input', onInput)
+
+        function onInput(e) {
+          var value = e.detail.value
+          tagify.whitelist = null // reset the whitelist
+
+          // https://developer.mozilla.org/en-US/docs/Web/API/AbortController/abort
+          // controller && controller.abort()
+          // controller = new AbortController()
+
+          // show loading animation and hide the suggestions dropdown
+          tagify.loading(true).dropdown.hide();
+
+          fetch('https://reqres.in/api/products&value=' + value)
+            .then(RES => RES.json())
+            .then(function (newWhitelist) {
+              console.log("newWhitelist", newWhitelist)
+              tagify.whitelist = (newWhitelist.data || []).map(e => e.name); // update inwhitelist Array in-place
+              // console.log("tagify.whitelist", tagify.whitelist)
+
+              tagify.loading(false).dropdown.show(value) // render the suggestions dropdown
+            })
+        }
         document
           .getElementById('custom-img-src')
           .addEventListener('change', ({ target }) => {
