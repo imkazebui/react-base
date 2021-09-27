@@ -30,3 +30,9 @@ export const generateSelectUI = (
     </select>
   );
 };
+
+export const getElVal = (id, defaultValue = '') => {
+  let el = document.getElementById(id);
+
+  return el ? el.value : defaultValue;
+};

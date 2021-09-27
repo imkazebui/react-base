@@ -3,7 +3,7 @@ import ReactDOMServer from 'react-dom/server';
 import { Col, Input, Row, Button } from 'antd';
 import axios from 'axios';
 
-import { generateSelectUI } from './util';
+import { generateSelectUI, getElVal } from './util';
 
 const MatomoImageBlock = (editor) => {
   try {
@@ -63,33 +63,33 @@ const MatomoImageBlock = (editor) => {
         <Row gutter="16">
           <Col span="12">
             <label>Site id</label>
-            <Input id="site-id" />
+            <Input id="idsite" />
           </Col>
           <Col span="12">
             <label>Url root</label>
-            <Input id="url-root" />
+            <Input id="url" />
           </Col>
         </Row>
         <br />
         <Row gutter="16">
           <Col span="12">
             <label>Record Campaign Name</label>
-            <Input id="campaign-name" />
+            <Input id="_rcn" />
           </Col>
           <Col span="12">
             <label>Record Campaign Key</label>
-            <Input id="campaign-key" />
+            <Input id="_rck" />
           </Col>
         </Row>
         <br />
         <Row gutter="16">
           <Col span="12">
             <label>Action Name</label>
-            <Input id="action-name" />
+            <Input id="action_name" />
           </Col>
           <Col span="12">
             <label>Cvar</label>
-            <Input id="cvar" />
+            <Input id="_cvar" />
           </Col>
         </Row>
         <br />
@@ -114,16 +114,18 @@ const MatomoImageBlock = (editor) => {
           .addEventListener('click', () => {
             // get data from input
 
-            let uid; // da co
-            let idsite; // da co
-            let rec = 1;
-            let bots = 1;
-            let url; // da co
-            let action_name; // da co
-            let _rcn; // da co
-            let _rck; // da co
-            let _cvar; // da co
-            let apiv = 1;
+            const data = {
+              uid: getElVal('uid'), // da co
+              idsite: getElVal('idsite'), // da co
+              rec: 1,
+              bots: 1,
+              url: getElVal('url'), // da co
+              action_name: getElVal('action_name'), // da co
+              _rcn: getElVal('_rcn'), // da co
+              _rck: getElVal('_rck'), // da co
+              _cvar: getElVal('_cvar'), // da co
+              apiv: 1,
+            };
 
             // close modal
             document.getElementsByClassName('gjs-mdl-btn-close')[0].click();
