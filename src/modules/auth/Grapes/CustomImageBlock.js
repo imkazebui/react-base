@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import ReactDOMServer from 'react-dom/server';
-import { Col, Input, Row } from 'antd';
+import { Col, Input, Row, Button } from 'antd';
 
 import { generateSelectUI } from './util';
 
@@ -57,6 +57,12 @@ const CustomImageBlock = (editor) => {
         </Col>
       </Row>
       <br />
+      {/* <Row gutter="16" justify="end">
+        <Col>
+          <Button id="custom-modal-ok">Ok</Button>
+        </Col>
+      </Row>
+      <br /> */}
     </>
   );
 
@@ -66,6 +72,12 @@ const CustomImageBlock = (editor) => {
         title: 'Custom Image',
         content: ReactDOMServer.renderToString(modal),
       }).onceClose(() => this.stopCommand());
+
+      // document
+      //   .getElementById('custom-modal-ok')
+      //   .addEventListener('click', () => {
+      //     document.getElementsByClassName('gjs-mdl-btn-close')[0].click();
+      //   });
 
       document
         .getElementById('custom-img-href')
