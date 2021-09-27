@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import ReactDOMServer from 'react-dom/server';
 import { Col, Input, Row } from 'antd';
 
+import { generateSelectUI } from './util';
+
 const CustomImageBlock = (editor) => {
   editor.DomComponents.addType('custom-img', {
     isComponent: (el) => el.tagName === 'a',
@@ -51,13 +53,7 @@ const CustomImageBlock = (editor) => {
         </Col>
         <Col span="12">
           <label>Source Tag</label>
-          {/* <Input id="custom-img-src" /> */}
-          <select name="cars" id="custom-img-src">
-            <option value="volvo">Volvo</option>
-            <option value="saab">Saab</option>
-            <option value="mercedes">Mercedes</option>
-            <option value="audi">Audi</option>
-          </select>
+          {generateSelectUI('custom-img-src')}
         </Col>
       </Row>
       <br />

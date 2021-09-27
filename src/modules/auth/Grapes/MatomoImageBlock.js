@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import ReactDOMServer from 'react-dom/server';
 import { Col, Input, Row } from 'antd';
 
+import { generateSelectUI } from './util';
+
 const MatomoImageBlock = (editor) => {
   editor.DomComponents.addType('matomo-img', {
     isComponent: (el) => el.tagName === 'IMG',
@@ -40,49 +42,44 @@ const MatomoImageBlock = (editor) => {
       <Row gutter="16">
         <Col span="12">
           <label>Matomo root link</label>
-          <Input id="custom-img-href" />
+          <Input id="matomo-root-link" />
         </Col>
         <Col span="12">
           <label>Uid</label>
-          <select name="cars" id="custom-img-src">
-            <option value="volvo">Volvo</option>
-            <option value="saab">Saab</option>
-            <option value="mercedes">Mercedes</option>
-            <option value="audi">Audi</option>
-          </select>
+          {generateSelectUI('uid')}
         </Col>
       </Row>
       <br />
       <Row gutter="16">
         <Col span="12">
           <label>Site id</label>
-          <Input id="custom-img-href" />
+          <Input id="site-id" />
         </Col>
         <Col span="12">
           <label>Url root</label>
-          <Input id="custom-img-href" />
+          <Input id="url-root" />
         </Col>
       </Row>
       <br />
       <Row gutter="16">
         <Col span="12">
           <label>Record Campaign Name</label>
-          <Input id="custom-img-href" />
+          <Input id="campaign-name" />
         </Col>
         <Col span="12">
           <label>Record Campaign Key</label>
-          <Input id="custom-img-href" />
+          <Input id="campaign-key" />
         </Col>
       </Row>
       <br />
       <Row gutter="16">
         <Col span="12">
           <label>Action Name</label>
-          <Input id="custom-img-href" />
+          <Input id="action-name" />
         </Col>
         <Col span="12">
           <label>Cvar</label>
-          <Input id="custom-img-href" />
+          <Input id="cvar" />
         </Col>
       </Row>
 
@@ -97,26 +94,26 @@ const MatomoImageBlock = (editor) => {
         content: ReactDOMServer.renderToString(modal),
       }).onceClose(() => this.stopCommand());
 
-      document
-        .getElementById('custom-img-href')
-        .addEventListener('change', ({ target }) => {
-          const component = editor.getSelected();
-          component.updateTrait('href', {
-            value: target.value,
-          });
-          component.setAttributes({ href: target.value });
-        });
+      // document
+      //   .getElementById('custom-img-href')
+      //   .addEventListener('change', ({ target }) => {
+      //     const component = editor.getSelected();
+      //     component.updateTrait('href', {
+      //       value: target.value,
+      //     });
+      //     component.setAttributes({ href: target.value });
+      //   });
 
-      document
-        .getElementById('custom-img-src')
-        .addEventListener('change', ({ target }) => {
-          const component = editor.getSelected();
-          const allImages = component.find('img')[0];
-          allImages.updateTrait('src', {
-            value: target.value,
-          });
-          allImages.setAttributes({ src: target.value });
-        });
+      // document
+      //   .getElementById('custom-img-src')
+      //   .addEventListener('change', ({ target }) => {
+      //     const component = editor.getSelected();
+      //     const allImages = component.find('img')[0];
+      //     allImages.updateTrait('src', {
+      //       value: target.value,
+      //     });
+      //     allImages.setAttributes({ src: target.value });
+      //   });
     },
   });
 
