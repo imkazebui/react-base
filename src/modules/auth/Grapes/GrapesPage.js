@@ -10,13 +10,14 @@ import 'grapesjs/dist/css/grapes.min.css';
 import './styles.scss';
 
 import CustomImageBlock from './CustomImageBlock';
+import MatomoImageBlock from './MatomoImageBlock';
 
 const GrapesPage = () => {
   useEffect(() => {
     const editor = grapesjs.init({
       fromElement: 1,
       container: '#gjs',
-      plugins: [CustomImageBlock, 'gjs-blocks-basic'],
+      plugins: [CustomImageBlock, MatomoImageBlock, 'gjs-blocks-basic'],
     });
   }, []);
 
