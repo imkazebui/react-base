@@ -25,7 +25,9 @@ export const generateSelectUI = (
   return (
     <select name={name} id={id} className="custom-select">
       {options.map(({ label, value }, idx) => (
-        <option value={value}>{label}</option>
+        <option key={idx} value={value}>
+          {label}
+        </option>
       ))}
     </select>
   );

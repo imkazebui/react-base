@@ -52,7 +52,7 @@ const MatomoImageBlock = (editor) => {
         <Row gutter="16">
           <Col span="12">
             <label>Matomo root link</label>
-            <Input id="matomo-root-link" />
+            <Input id="rootLink" />
           </Col>
           <Col span="12">
             <label>Uid</label>
@@ -115,6 +115,7 @@ const MatomoImageBlock = (editor) => {
             // get data from input
 
             const data = {
+              rootLink: getElVal('rootLink'),
               uid: getElVal('uid'), // da co
               idsite: getElVal('idsite'), // da co
               rec: 1,
@@ -126,6 +127,26 @@ const MatomoImageBlock = (editor) => {
               _cvar: getElVal('_cvar'), // da co
               apiv: 1,
             };
+
+            let src = Object.keys(data)
+              .map((k) => {
+                if (k === 'rootLink') {
+                  return `{rootLink}`;
+                }
+                return `${k}={${k}}`;
+              })
+              .join('&')
+              .replace('&', '?');
+
+            Object.entries(data).map(([key, value]) => {
+              src = src.replace(`{${key}}`, value);
+            });
+
+            const component = editor.getSelected();
+            component.updateTrait('src', {
+              value: src,
+            });
+            component.setAttributes({ src });
 
             // close modal
             document.getElementsByClassName('gjs-mdl-btn-close')[0].click();
