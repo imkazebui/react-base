@@ -35,7 +35,19 @@ const CustomImage = (editor) => {
           },
         ],
       },
+      // updated(property, value, prevValue) {
+      //   console.log(
+      //     'Local hook: model.updated',
+      //     'property',
+      //     property,
+      //     'value',
+      //     value,
+      //     'prevValue',
+      //     prevValue
+      //   );
+      // },
     },
+
     // view: {
     //   onRender() {
     //     console.log('Local hook: view.onRender');
@@ -59,17 +71,6 @@ const GrapesPage = () => {
       content: {
         type: 'custom-img',
       },
-      // content: {
-      //   tagName: 'a',
-      //   attributes: { href: 'href-default' },
-      //   components: [
-      //     {
-      //       tagName: 'img',
-      //       attributes: { src: 'tagname' },
-      //       content: 'h1 content',
-      //     },
-      //   ],
-      // },
       activate: true,
     });
 
@@ -96,6 +97,7 @@ const GrapesPage = () => {
             component.updateTrait('href', {
               value: target.value,
             });
+            component.setAttributes({ href: target.value });
           });
 
         document
@@ -106,6 +108,7 @@ const GrapesPage = () => {
             allImages.updateTrait('src', {
               value: target.value,
             });
+            allImages.setAttributes({ src: target.value });
           });
       },
     });
