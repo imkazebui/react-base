@@ -5,21 +5,21 @@
   "dependencies": {
     "@stripe/react-stripe-js": "^1.4.1",
     "@stripe/stripe-js": "^1.17.1",
-    "antd": "^4.10.3",
-    "axios": "^0.21.1",
-    "classnames": "^2.2.6",
+    "antd": "^4.18.2",
+    "axios": "^0.24.0",
+    "classnames": "^2.3.1",
     "immutable": "^4.0.0-rc.14",
-    "js-cookie": "^2.2.1",
+    "js-cookie": "^3.0.1",
     "lodash.debounce": "^4.0.8",
-    "node-sass": "^5.0.0",
+    "node-sass": "^7.0.1",
     "nprogress": "^0.2.0",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "react-intl": "^5.10.16",
-    "react-query": "^3.6.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-intl": "^5.24.1",
+    "react-query": "^3.34.7",
     "react-redux": "^7.2.4",
-    "react-router-dom": "^5.2.0",
-    "react-scripts": "^4.0.1",
+    "react-router-dom": "^6.2.1",
+    "react-scripts": "^5.0.0",
     "redux-devtools-extension": "^2.13.8",
     "reselect": "^4.0.0"
   },
@@ -31,10 +31,14 @@
     "build:prod": "REACT_APP_ENV=prod npm run build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "install-core": "yarn add antd axios js-cookie node-sass@4.14.1 nprogress react react-dom react-intl react-router-dom react-scripts react-query classnames"
+    "install-core": "yarn add antd axios js-cookie node-sass nprogress react react-dom react-intl react-router-dom react-scripts react-query classnames",
+    "prepare": "husky install"
   },
   "eslintConfig": {
     "extends": "react-app"
+  },
+  "lint-staged": {
+    "**/*.{js,jsx}": ["eslint --fix"]
   },
   "browserslist": {
     "production": [
@@ -47,5 +51,16 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^5.2.0",
+    "eslint-plugin-react": "^7.28.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.1.7",
+    "prettier": "2.5.1"
   }
 }

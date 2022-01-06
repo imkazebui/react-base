@@ -1,24 +1,16 @@
-import React, { useEffect } from 'react';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  useHistory,
-  Redirect,
-} from 'react-router-dom';
-import { Button, Result, Layout, Menu } from 'antd';
-import PropTypes from 'prop-types';
+import React from "react";
+import { Route, useNavigate, Routes } from "react-router-dom";
+import { Button, Result, Layout } from "antd";
 
-import renderRoutes from 'routers';
-import { Sidebar, Header } from 'components/Organisms';
+import renderRoutes from "routers";
+import { Sidebar, Header } from "components/Organisms";
 
-import './styles.scss';
+import "./styles.scss";
 
 const { Content } = Layout;
 
 const PrivateLayout = () => {
-  let history = useHistory();
+  const navigate = useNavigate();
 
   return (
     <Layout id="private-layout">
@@ -26,8 +18,8 @@ const PrivateLayout = () => {
       <Layout id="site-layout">
         <Header />
         <Content id="site-content">
-          <Switch>
-            {renderRoutes('private-layout')}
+          <Routes>
+            {renderRoutes("private-layout")}
 
             {/* <Route exact path="/">
                 <Redirect to={routePath.TEAM} />
@@ -39,13 +31,13 @@ const PrivateLayout = () => {
                 title="PAGE NOT FOUND"
                 subTitle="Sorry, the page you visited does not exist."
                 extra={
-                  <Button type="primary" onClick={() => history.replace('/')}>
+                  <Button type="primary" onClick={() => navigate("/")}>
                     Back Home
                   </Button>
                 }
               />
             </Route>
-          </Switch>
+            </Routes>
         </Content>
       </Layout>
     </Layout>

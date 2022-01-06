@@ -1,19 +1,18 @@
-import React, { useCallback, useMemo } from 'react';
-import withFilter, { FILTER_KEY } from './withFilter';
-import { useHistory } from 'react-router';
-import { messageSuccess } from 'utilities/message';
+import React, { useCallback, useMemo } from "react";
+import PropTypes from "prop-types";
+import withFilter, { FILTER_KEY } from "./withFilter";
+import { messageSuccess } from "utilities/message";
 
 const withCart = (WrappedComponent) => {
   const WithCart = (props) => {
-    const history = useHistory();
     const { filters: cart = [], setFiltersFieldAction: setCartAction } = props;
 
     const cartTotalPrice = useMemo(() => {
       return Array.isArray(cart)
         ? cart.reduce((acc, cur) => {
-            acc += cur.price;
-            return acc;
-          }, 0)
+          acc += cur.price;
+          return acc;
+        }, 0)
         : 0;
     }, [cart]);
 
@@ -26,11 +25,11 @@ const withCart = (WrappedComponent) => {
             setCartAction([...cart]);
           }
           messageSuccess({
-            key: 'addCartSuccess',
-            content: 'Template is added to cart',
+            key: "addCartSuccess",
+            content: "Template is added to cart"
           });
           if (redirect) {
-            // history.push(CART);
+            // useNavigate
           }
         },
       [cart]
@@ -63,6 +62,12 @@ const withCart = (WrappedComponent) => {
       />
     );
   };
+
+  WithCart.propTypes = {
+    filters: PropTypes.array,
+    setFiltersFieldAction: PropTypes.func
+  };
+
   return withFilter({ filterKey: FILTER_KEY.CART })(WithCart);
 };
 
