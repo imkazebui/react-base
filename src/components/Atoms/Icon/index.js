@@ -1,11 +1,14 @@
 import React from 'react';
 import AntIcon from '@ant-design/icons';
+import PropTypes from 'prop-types';
 
 const Icon = ({ component, ...rest }) => {
   return <AntIcon component={component} {...rest} />;
 };
 
-Icon.propTypes = {};
+Icon.propTypes = {
+  component: PropTypes.element,
+};
 
 export default Icon;
 

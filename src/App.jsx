@@ -9,7 +9,7 @@ import queryClient from 'utilities/queryClient';
 
 import messages from 'translations';
 
-function App () {
+const App = () => {
   const language = 'en';
   return (
     <React.StrictMode>
@@ -18,7 +18,6 @@ function App () {
           <Router>
             <Suspense fallback={<LoadingScreen />}>
               <Routes>
-                <h1 key="1">h1</h1>
                 {renderRoutes()}
                 {renderRoutes('other-private')}
                 {/* <Routes path="/">
@@ -31,6 +30,6 @@ function App () {
       </QueryClientProvider>
     </React.StrictMode>
   );
-}
+};
 
 export default App;

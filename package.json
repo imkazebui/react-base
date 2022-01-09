@@ -38,7 +38,7 @@
     "extends": "react-app"
   },
   "lint-staged": {
-    "**/*.{js,jsx}": ["eslint --fix"]
+    "**/*.{js,jsx}": ["eslint"]
   },
   "browserslist": {
     "production": [

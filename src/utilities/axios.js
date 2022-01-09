@@ -19,12 +19,12 @@ instance.interceptors.request.use(function (config) {
   requestsCounter++;
   NProgress.start();
 
-  let token = Cookies.get(TOKEN);
+  const token = Cookies.get(TOKEN);
 
   const language = Cookies.get(LANGUAGE) || 'en';
 
   config.headers.Authorization = token ? `Bearer ${token}` : '';
-  config.headers['Accept-Language'] = language ? language : '';
+  config.headers['Accept-Language'] = language || '';
 
   return config;
 });
@@ -56,13 +56,15 @@ instance.interceptors.response.use(
 
     const { status } = error.response;
 
+    let url;
     switch (status) {
       case 401:
-        const url = authPath.login + `?continue=${window.location.href}`;
+        url = authPath.login + `?continue=${window.location.href}`;
         window.location.href = url;
         break;
       case 403:
-      // todo
+        // todo
+        break;
       default:
         // other case
         break;

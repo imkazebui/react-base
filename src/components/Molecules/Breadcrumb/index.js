@@ -3,6 +3,7 @@ import { Breadcrumb as BreadcrumbAnt } from 'antd';
 import { Link } from 'react-router-dom';
 import './styles.scss';
 import cn from 'classnames';
+import PropTypes from 'prop-types';
 
 const Breadcrumb = ({ className, breadcrumbs = [], breadcrumbExtension }) => {
   if (!breadcrumbs?.length && !breadcrumbExtension?.length) return null;
@@ -41,6 +42,12 @@ const Breadcrumb = ({ className, breadcrumbs = [], breadcrumbExtension }) => {
       })}
     </BreadcrumbAnt>
   );
+};
+
+Breadcrumb.propTypes = {
+  className: PropTypes.string,
+  breadcrumbs: PropTypes.array,
+  breadcrumbExtension: PropTypes.array,
 };
 
 export default Breadcrumb;

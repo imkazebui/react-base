@@ -1,5 +1,5 @@
 import { lazy } from 'react';
-import { CaretDownOutlined, CaretUpOutlined } from '@ant-design/icons';
+import { CaretDownOutlined } from '@ant-design/icons';
 
 const StaffManagement = lazy(() => import('./List'));
 

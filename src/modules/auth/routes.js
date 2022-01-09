@@ -1,4 +1,4 @@
-import { lazy } from 'react';
+import React, { lazy } from 'react';
 const Login = lazy(() => import('./Login'));
 
 export const routePath = {

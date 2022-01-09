@@ -1,7 +1,7 @@
-import messages_vi from './vi.json';
-import messages_en from './en.json';
+import messagesVI from './vi.json';
+import messagesEN from './en.json';
 
 export default {
-  vi: messages_vi,
-  en: messages_en,
+  vi: messagesVI,
+  en: messagesEN,
 };

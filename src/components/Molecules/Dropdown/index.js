@@ -57,6 +57,8 @@ const Dropdown = ({
 Dropdown.propTypes = {
   children: PropTypes.element,
   menu: PropTypes.array,
+  onSelectItem: PropTypes.func,
+  showIcon: PropTypes.bool,
 };
 
 export default memo(Dropdown);
