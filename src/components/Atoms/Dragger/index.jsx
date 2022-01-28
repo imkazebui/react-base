@@ -6,13 +6,11 @@ import './styles.scss';
 
 const { Dragger: DraggerAntd } = Upload;
 
-const Dragger = ({ children, className = '', ...rest }) => {
-  return (
-    <DraggerAntd className={cn('dragger-wrapper', className)} {...rest}>
-      {children}
-    </DraggerAntd>
-  );
-};
+const Dragger = ({ children, className, ...rest }) => (
+  <DraggerAntd className={cn('dragger-wrapper', className)} {...rest}>
+    {children}
+  </DraggerAntd>
+);
 
 Dragger.propTypes = {
   children: PropTypes.element,
@@ -20,8 +18,8 @@ Dragger.propTypes = {
 };
 
 Dragger.defaultProps = {
-  showUploadList: false,
-  customRequest: () => {},
+  className: '',
+  children: <div>Dragger</div>,
 };
 
 export default Dragger;

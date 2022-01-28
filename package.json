@@ -13,6 +13,7 @@
     "lodash.debounce": "^4.0.8",
     "node-sass": "^7.0.1",
     "nprogress": "^0.2.0",
+    "prop-types": "^15.8.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-intl": "^5.24.1",
@@ -32,13 +33,14 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "install-core": "yarn add antd axios js-cookie node-sass nprogress react react-dom react-intl react-router-dom react-scripts react-query classnames",
-    "prepare": "husky install"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
+    "prepare": "husky install",
+    "storybook": "start-storybook -p 6006 -s public",
+    "build-storybook": "build-storybook -s public"
   },
   "lint-staged": {
-    "**/*.{js,jsx}": ["eslint"]
+    "**/*.{js,jsx}": [
+      "eslint"
+    ]
   },
   "browserslist": {
     "production": [
@@ -53,14 +55,25 @@
     ]
   },
   "devDependencies": {
+    "@storybook/addon-actions": "^6.4.15",
+    "@storybook/addon-essentials": "^6.4.15",
+    "@storybook/addon-links": "^6.4.15",
+    "@storybook/builder-webpack5": "^6.4.15",
+    "@storybook/manager-webpack5": "^6.4.15",
+    "@storybook/node-logger": "^6.4.15",
+    "@storybook/preset-create-react-app": "^4.0.0",
+    "@storybook/react": "^6.4.15",
     "eslint": "^7.32.0",
+    "eslint-config-airbnb": "^19.0.4",
     "eslint-config-standard": "^16.0.3",
     "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^5.2.0",
     "eslint-plugin-react": "^7.28.0",
+    "eslint-plugin-storybook": "^0.5.6",
     "husky": "^7.0.4",
     "lint-staged": "^12.1.7",
-    "prettier": "2.5.1"
+    "prettier": "2.5.1",
+    "webpack": "^5.67.0"
   }
 }

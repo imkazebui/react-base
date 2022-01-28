@@ -9,7 +9,7 @@ import queryClient from 'utilities/queryClient';
 
 import messages from 'translations';
 
-const App = () => {
+function App() {
   const language = 'en';
   return (
     <React.StrictMode>
@@ -30,6 +30,6 @@ const App = () => {
       </QueryClientProvider>
     </React.StrictMode>
   );
-};
+}
 
 export default App;
