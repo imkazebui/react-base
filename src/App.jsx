@@ -12,7 +12,7 @@ import messages from 'translations';
 function App() {
   const language = 'en';
 
-  // console.log('hello');
+  console.log('hello');
 
   return (
     <React.StrictMode>
