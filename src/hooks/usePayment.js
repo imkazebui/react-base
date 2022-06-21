@@ -1,5 +1,5 @@
 import { loadStripe } from '@stripe/stripe-js';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useMutation, useQuery } from 'react-query';
 import axios from 'utilities/axios';
 import queryClient from 'utilities/queryClient';
@@ -19,11 +19,10 @@ const API = {
   },
 };
 
-export const useGetStripePublishKey = () => {
-  return useQuery('stripePublishKey', () =>
+export const useGetStripePublishKey = () =>
+  useQuery('stripePublishKey', () =>
     axios.get(API.PAYMENT.GET_STRIPE_PUBLISH_KEY).then((res) => res.data)
   );
-};
 
 export const useGetStripePromise = () => {
   const [stripePromise, setStripePromise] = useState(undefined);
@@ -39,26 +38,19 @@ export const useGetStripePromise = () => {
   return { stripePromise };
 };
 
-export const useCreatePaymentMethod = () => {
-  return useMutation(
-    (values) => axios.post(API.PAYMENT.PAYMENT_METHOD, values),
-    {
-      onError: () => {},
-      onSuccess: () => {
-        queryClient.invalidateQueries('payment-methods');
-      },
-    }
-  );
-};
+export const useCreatePaymentMethod = () =>
+  useMutation((values) => axios.post(API.PAYMENT.PAYMENT_METHOD, values), {
+    onError: () => {},
+    onSuccess: () => {
+      queryClient.invalidateQueries('payment-methods');
+    },
+  });
 
-export const useGetListPaymentMethod = () => {
-  return useQuery('payment-methods', () =>
-    axios.get(API.PAYMENT.PAYMENT_METHOD).then((res) => res.data)
-  );
-};
+export const useGetListPaymentMethod = () =>
+  useQuery('payment-methods', () => axios.get(API.PAYMENT.PAYMENT_METHOD).then((res) => res.data));
 
-export const useDeletePaymentMethod = () => {
-  return useMutation(
+export const useDeletePaymentMethod = () =>
+  useMutation(
     ({ cardId, type }) =>
       axios.delete(
         type === 'AchAccount'
@@ -72,53 +64,39 @@ export const useDeletePaymentMethod = () => {
       },
     }
   );
-};
 
-export const useGetPaymentIntent = () => {
-  return useMutation(
-    (values) =>
-      axios.post(API.PAYMENT.PAYMENT_INTENT, values).then((res) => res.data),
-    {
-      onError: () => {},
-    }
-  );
-};
+export const useGetPaymentIntent = () =>
+  useMutation((values) => axios.post(API.PAYMENT.PAYMENT_INTENT, values).then((res) => res.data), {
+    onError: () => {},
+  });
 
-export const useCreateACH = () => {
-  return useMutation((values) => axios.post(API.PAYMENT.CREATE_ACH, values), {
+export const useCreateACH = () =>
+  useMutation((values) => axios.post(API.PAYMENT.CREATE_ACH, values), {
     onError: () => {},
     onSuccess: () => {
       queryClient.invalidateQueries('payment-methods');
     },
   });
-};
 
-export const useVerifyACH = () => {
-  return useMutation((values) => axios.post(API.PAYMENT.VERIFY_ACH, values), {
+export const useVerifyACH = () =>
+  useMutation((values) => axios.post(API.PAYMENT.VERIFY_ACH, values), {
     onError: () => {},
     onSuccess: () => {
       queryClient.invalidateQueries('payment-methods');
     },
   });
-};
 
-export const useChargeACH = () => {
-  return useMutation((values) => axios.post(API.PAYMENT.CHARGE_ACH, values));
-};
+export const useChargeACH = () =>
+  useMutation((values) => axios.post(API.PAYMENT.CHARGE_ACH, values));
 
-export const useGetTransactions = (filters) => {
-  return useQuery(
+export const useGetTransactions = (filters) =>
+  useQuery(
     ['transactions', filters],
-    () =>
-      axios
-        .get(API.PAYMENT.TRANSACTIONS, { params: filters })
-        .then((res) => res.data),
+    () => axios.get(API.PAYMENT.TRANSACTIONS, { params: filters }).then((res) => res.data),
     {
       keepPreviousData: true,
     }
   );
-};
 
-export const useRequestFunds = () => {
-  return useMutation((values) => axios.post(API.PAYMENT.REQUEST_FUNDS, values));
-};
+export const useRequestFunds = () =>
+  useMutation((values) => axios.post(API.PAYMENT.REQUEST_FUNDS, values));

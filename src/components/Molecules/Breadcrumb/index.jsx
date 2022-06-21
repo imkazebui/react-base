@@ -1,3 +1,7 @@
+/* eslint-disable no-param-reassign */
+/* eslint-disable react/no-array-index-key */
+/* eslint-disable react/forbid-prop-types */
+/* eslint-disable react/require-default-props */
 import React from 'react';
 import { Breadcrumb as BreadcrumbAnt } from 'antd';
 import { Link } from 'react-router-dom';
@@ -11,10 +15,7 @@ const Breadcrumb = ({ className, breadcrumbs = [], breadcrumbExtension }) => {
     breadcrumbs = [...breadcrumbs, ...breadcrumbExtension];
   }
   return (
-    <BreadcrumbAnt
-      className={cn('breadcrumb-wrapper', className)}
-      separator=">"
-    >
+    <BreadcrumbAnt className={cn('breadcrumb-wrapper', className)} separator=">">
       {breadcrumbs.map((item, idx) => {
         const isLastChild = idx + 1 === breadcrumbs.length;
         return (

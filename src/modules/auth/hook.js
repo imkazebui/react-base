@@ -30,7 +30,7 @@ export const useHook = () => {
     Cookies.remove(TOKEN, {
       domain: `.${process.env.REACT_APP_HOST_NAME}`,
     });
-    history.push(routePath.login);
+    navigate(routePath.login);
   };
 
   return {

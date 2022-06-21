@@ -2,10 +2,10 @@ import React from 'react';
 import cn from 'classnames';
 import { Modal } from 'antd';
 import { ExclamationCircleOutlined } from '@ant-design/icons';
-import Icon, { SirenErrorIcon, UploadingIcon } from 'components/Atoms/Icon';
+import Icon, { SirenErrorIcon } from 'components/Atoms/Icon';
 import { isMobile } from './browser';
 
-const { confirm, error, info } = Modal;
+const { confirm, error } = Modal;
 
 export const showModalError = ({
   title,
@@ -13,12 +13,13 @@ export const showModalError = ({
   icon,
   okText,
   okType,
-  onOk,
-  onCancel,
+  // onOk = (f) => f,
+  // onCancel = (f) => f,
   centered = true,
 }) => {
   error({
     title: (
+      // eslint-disable-next-line react/jsx-filename-extension
       <div>
         <div>
           <Icon component={icon || SirenErrorIcon} />
@@ -38,13 +39,13 @@ export const showModalError = ({
       },
     },
     centered,
-    onOk(close) {
-      onOk && onOk();
-      close();
-    },
-    onCancel() {
-      onCancel && onCancel();
-    },
+    // onOk(close) {
+    //   onOk();
+    //   close();
+    // },
+    // onCancel() {
+    //   onCancel && onCancel();
+    // },
   });
 };
 
@@ -62,11 +63,11 @@ export const showModalConfirm = ({
   ...rest
 }) => {
   confirm({
-    title: title,
+    title,
     icon: icon || <ExclamationCircleOutlined />,
-    content: content,
-    okText: okText,
-    okType: okType,
+    content,
+    okText,
+    okType,
     cancelText: cancelText || 'No',
     onOk,
     onCancel,
@@ -88,9 +89,7 @@ export const showModalConfirmStylePrimary = (props) => {
       },
     },
     cancelButtonProps: props.cancelButtonProps || {
-      className: `site-button btn-secondary-outline ${
-        isMobile ? 'h-40' : 'h-45'
-      }`,
+      className: `site-button btn-secondary-outline ${isMobile ? 'h-40' : 'h-45'}`,
       style: {
         width: isMobile ? '100px' : '175px',
       },

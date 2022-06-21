@@ -1,3 +1,5 @@
+/* eslint-disable react/require-default-props */
+/* eslint-disable react/forbid-prop-types */
 import React from 'react';
 import { Select as AntdSelect } from 'antd';
 import cn from 'classnames';

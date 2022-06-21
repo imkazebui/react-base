@@ -1,10 +1,10 @@
+/* eslint-disable react/require-default-props */
+/* eslint-disable react/forbid-prop-types */
 import React from 'react';
 import AntIcon from '@ant-design/icons';
 import PropTypes from 'prop-types';
 
-const Icon = ({ component, ...rest }) => {
-  return <AntIcon component={component} {...rest} />;
-};
+const Icon = ({ component, ...rest }) => <AntIcon component={component} {...rest} />;
 
 Icon.propTypes = {
   component: PropTypes.element,

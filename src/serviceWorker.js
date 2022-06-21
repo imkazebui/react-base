@@ -1,3 +1,6 @@
+/* eslint-disable operator-linebreak */
+/* eslint-disable no-param-reassign */
+/* eslint-disable no-use-before-define */
 // This optional code is used to register a service worker.
 // register() is not called by default.
 
@@ -15,9 +18,7 @@ const isLocalhost = Boolean(
     // [::1] is the IPv6 localhost address.
     window.location.hostname === '[::1]' ||
     // 127.0.0.1/8 is considered localhost for IPv4.
-    window.location.hostname.match(
-      /^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/
-    )
+    window.location.hostname.match(/^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/)
 );
 
 export const register = (config) => {
@@ -109,6 +110,7 @@ const checkValidServiceWorker = (swUrl, config) => {
       // Ensure service worker exists, and that we really are getting a JS file.
       const contentType = response.headers.get('content-type');
       if (
+        // eslint-disable-next-line operator-linebreak
         response.status === 404 ||
         (contentType != null && contentType.indexOf('javascript') === -1)
       ) {
@@ -125,9 +127,7 @@ const checkValidServiceWorker = (swUrl, config) => {
     })
     .catch(() => {
       // eslint-disable-next-line no-console
-      console.log(
-        'No internet connection found. App is running in offline mode.'
-      );
+      console.log('No internet connection found. App is running in offline mode.');
     });
 };
 

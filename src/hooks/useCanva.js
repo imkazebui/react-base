@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const useCanva = (forceInit) => {
   const [apiCanva, setApiCanva] = useState(undefined);
@@ -19,7 +19,7 @@ const useCanva = (forceInit) => {
   useEffect(() => {
     const script = document.createElement('script');
     script.src = 'https://sdk.canva.com/designbutton/v2/api.js';
-    script.onload = async function () {
+    script.onload = async () => {
       // API initialization
       if (window.Canva && window.Canva.DesignButton) {
         const api = await window.Canva.DesignButton.initialize({

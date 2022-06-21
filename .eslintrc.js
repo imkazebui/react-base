@@ -8,6 +8,7 @@ module.exports = {
     'standard',
     'airbnb',
     'plugin:storybook/recommended',
+    'prettier',
   ],
   parserOptions: {
     ecmaFeatures: {
@@ -28,6 +29,9 @@ module.exports = {
     'import/prefer-default-export': 'off',
     'object-curly-newline': 'off',
     'react/jsx-one-expression-per-line': 'off',
+    'no-confusing-arrow': 0,
+    'implicit-arrow-linebreak': 0,
+    'no-restricted-exports': 0,
   },
   overrides: [
     {

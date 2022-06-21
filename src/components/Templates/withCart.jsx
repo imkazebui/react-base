@@ -1,20 +1,18 @@
-import React, { useCallback, useMemo } from "react";
-import PropTypes from "prop-types";
-import withFilter, { FILTER_KEY } from "./withFilter";
-import { messageSuccess } from "utilities/message";
+/* eslint-disable react/require-default-props */
+/* eslint-disable react/forbid-prop-types */
+import React, { useCallback, useMemo } from 'react';
+import PropTypes from 'prop-types';
+import { messageSuccess } from 'utilities/message';
+import withFilter, { FILTER_KEY } from './withFilter';
 
 const withCart = (WrappedComponent) => {
   const WithCart = (props) => {
     const { filters: cart = [], setFiltersFieldAction: setCartAction } = props;
 
-    const cartTotalPrice = useMemo(() => {
-      return Array.isArray(cart)
-        ? cart.reduce((acc, cur) => {
-          acc += cur.price;
-          return acc;
-        }, 0)
-        : 0;
-    }, [cart]);
+    const cartTotalPrice = useMemo(
+      () => (Array.isArray(cart) ? cart.reduce((acc, cur) => cur.price + acc, 0) : 0),
+      [cart]
+    );
 
     const addToCart = useCallback(
       (item, redirect = false) =>
@@ -25,8 +23,8 @@ const withCart = (WrappedComponent) => {
             setCartAction([...cart]);
           }
           messageSuccess({
-            key: "addCartSuccess",
-            content: "Template is added to cart"
+            key: 'addCartSuccess',
+            content: 'Template is added to cart',
           });
           if (redirect) {
             // useNavigate
@@ -65,7 +63,7 @@ const withCart = (WrappedComponent) => {
 
   WithCart.propTypes = {
     filters: PropTypes.array,
-    setFiltersFieldAction: PropTypes.func
+    setFiltersFieldAction: PropTypes.func,
   };
 
   return withFilter({ filterKey: FILTER_KEY.CART })(WithCart);

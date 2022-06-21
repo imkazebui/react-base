@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-filename-extension */
 import React from 'react';
 import { Route as RouteDom } from 'react-router-dom';
 
@@ -21,7 +22,8 @@ const renderRoutes = (routeType = 'public', userRole = '') => {
   return routes.map(
     ({ component: Component, roles, ...rest }, idx) =>
       checkValidRole(roles, userRole) && (
-        <Route {...rest} key={idx} element={<Component />} />
+        // eslint-disable-next-line react/no-array-index-key
+        <Route {...rest} key={`id-${idx}`} element={<Component />} />
       )
   );
 };

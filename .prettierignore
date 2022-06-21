@@ -1,0 +1,7 @@
+.build
+logs
+node_modules
+libs/db/models
+*.log
+*.lock
+LICENSE

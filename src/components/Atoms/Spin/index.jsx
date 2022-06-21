@@ -3,9 +3,7 @@ import { Spin as SpinAntd } from 'antd';
 
 import './styles.scss';
 
-const Spin = () => {
-  return <SpinAntd />;
-};
+const Spin = () => <SpinAntd />;
 
 export default Spin;
 

@@ -1,3 +1,4 @@
+/* eslint-disable no-constant-condition */
 import React from 'react';
 import { Layout, Row, Col, Menu, Avatar } from 'antd';
 import { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons';
@@ -9,14 +10,12 @@ const { SubMenu } = Menu;
 
 const { Header: HeaderAntd } = Layout;
 
-const AvataUser = () => {
-  return (
-    <>
-      <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
-      Phuong Bui
-    </>
-  );
-};
+const AvataUser = () => (
+  <>
+    <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+    Phuong Bui
+  </>
+);
 
 const Header = () => {
   const { handleLogout } = useAuth();

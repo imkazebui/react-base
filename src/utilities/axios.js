@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import NProgress from 'nprogress';
@@ -15,8 +16,8 @@ const instance = axios.create({
 });
 
 // Set the AUTH token for any request
-instance.interceptors.request.use(function (config) {
-  requestsCounter++;
+instance.interceptors.request.use((config) => {
+  requestsCounter += 1;
   NProgress.start();
 
   const token = Cookies.get(TOKEN);
@@ -31,17 +32,17 @@ instance.interceptors.request.use(function (config) {
 
 // Add a response interceptor
 instance.interceptors.response.use(
-  function (response) {
+  (response) => {
     // Any status code that lie within the range of 2xx cause this function to trigger
     // Do something with response data
-
-    if (--requestsCounter === 0) {
+    requestsCounter -= 1;
+    if (requestsCounter <= 0) {
       NProgress.done();
     }
 
     return response;
   },
-  function (error) {
+  (error) => {
     // Any status codes that falls outside the range of 2xx cause this function to trigger
     // Do something with response error
     // console.log('err', error.toJSON());
@@ -50,7 +51,8 @@ instance.interceptors.response.use(
     //   console.log(`idx ${idx}`, label, value);
     // });
 
-    if (--requestsCounter === 0) {
+    requestsCounter -= 1;
+    if (requestsCounter === 0) {
       NProgress.done();
     }
 
@@ -59,7 +61,7 @@ instance.interceptors.response.use(
     let url;
     switch (status) {
       case 401:
-        url = authPath.login + `?continue=${window.location.href}`;
+        url = `${authPath.login}?continue=${window.location.href}`;
         window.location.href = url;
         break;
       case 403:
@@ -74,9 +76,8 @@ instance.interceptors.response.use(
   }
 );
 
-const updateProgress = (e) =>
-  NProgress.inc(calculatePercentage(e.loaded, e.total));
 const calculatePercentage = (loaded, total) => Math.floor(loaded * 1.0) / total;
+const updateProgress = (e) => NProgress.inc(calculatePercentage(e.loaded, e.total));
 
 instance.defaults.onDownloadProgress = updateProgress;
 instance.defaults.onUploadProgress = updateProgress;

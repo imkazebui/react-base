@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 import { useState, useEffect } from 'react';
 
 // Hook
@@ -30,10 +31,7 @@ export default function useScript(src) {
         // Store status in attribute on script
         // This can be read by other instances of this hook
         const setAttributeFromEvent = (event) => {
-          script.setAttribute(
-            'data-status',
-            event.type === 'load' ? 'ready' : 'error'
-          );
+          script.setAttribute('data-status', event.type === 'load' ? 'ready' : 'error');
         };
 
         script.addEventListener('load', setAttributeFromEvent);

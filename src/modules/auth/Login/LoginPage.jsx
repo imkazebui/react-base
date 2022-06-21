@@ -16,10 +16,7 @@ const Login = () => {
         <h1>Login</h1>
         <Form layout="vertical" onFinish={onSubmit}>
           <FormInput formProps={{ label: 'Username', name: 'email' }} />
-          <FormInput
-            formProps={{ label: 'Password', name: 'password' }}
-            type="password"
-          />
+          <FormInput formProps={{ label: 'Password', name: 'password' }} type="password" />
           <FormButton type="primary" htmlType="submit">
             Submit
           </FormButton>

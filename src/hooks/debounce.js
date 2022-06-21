@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 
 // Usage: https://codesandbox.io/s/711r1zmq50
 

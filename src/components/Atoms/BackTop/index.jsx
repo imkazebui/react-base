@@ -4,14 +4,12 @@ import Icon from 'components/Atoms/Icon';
 import { ArrowUpOutlined } from '@ant-design/icons';
 import './styles.scss';
 
-const BackTop = () => {
-  return (
-    <BackTopAntd>
-      <div className="wrapper-back-top-btn">
-        <Icon component={ArrowUpOutlined} />
-      </div>
-    </BackTopAntd>
-  );
-};
+const BackTop = () => (
+  <BackTopAntd>
+    <div className="wrapper-back-top-btn">
+      <Icon component={ArrowUpOutlined} />
+    </div>
+  </BackTopAntd>
+);
 
 export default BackTop;

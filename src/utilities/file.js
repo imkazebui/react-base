@@ -1,13 +1,13 @@
 import { saveAs } from 'file-saver';
 
-export const getBase64 = (file) => {
-  return new Promise((resolve, reject) => {
+export const getBase64 = (file) =>
+  // eslint-disable-next-line implicit-arrow-linebreak
+  new Promise((resolve, reject) => {
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = () => resolve(reader.result);
     reader.onerror = (error) => reject(error);
   });
-};
 
 export const getBase64FromUrl = async (url) => {
   const data = await fetch(url);
@@ -39,9 +39,7 @@ export const normFile = (e, key = 'fileList') => {
 };
 
 export const downloadFileFromBase64 = (dataType) => async (str, name) => {
-  const blob = await fetch(`data:${dataType};base64,${str}`).then((res) =>
-    res.blob()
-  );
+  const blob = await fetch(`data:${dataType};base64,${str}`).then((res) => res.blob());
   const url = URL.createObjectURL(blob);
   saveAs(url, `${name}`);
 };
@@ -56,9 +54,10 @@ export const bytesToSize = (bytes) => {
   return `${(bytes / 1024 ** i).toFixed(1)} ${sizes[i]}`;
 };
 
-export const bytesToMB = (bytes) => {
-  return bytes / Math.pow(1024, 2);
-};
+/**
+ * TODO: need to re-check
+ */
+export const bytesToMB = (bytes) => bytes / 1024 ** 2;
 
 // Can use for get dimension of image
 export const getFileFromUrl = async (url) => {
@@ -66,28 +65,38 @@ export const getFileFromUrl = async (url) => {
   return file;
 };
 
-export const getImageDimensionsFromFile = (file) => {
-  return new Promise((resolve, reject) => {
-    let img = new Image();
-    img.onload = function () {
-      file.dimensions = [this.width, this.height].join('x');
-      file.width = this.width;
-      file.height = this.height;
-      resolve(file);
+/**
+ * TODO: re-check
+ */
+export const getImageDimensionsFromFile = (file) =>
+  // eslint-disable-next-line implicit-arrow-linebreak
+  new Promise((resolve, reject) => {
+    const img = new Image();
+    const newFile = file;
+    img.onload = () => {
+      newFile.dimensions = [this.width, this.height].join('x');
+      newFile.width = this.width;
+      newFile.height = this.height;
+      resolve(newFile);
     };
-    img.onerror = function (err) {
+    img.onerror = (err) => {
       reject(err);
     };
-    img.src = URL.createObjectURL(file);
+    img.src = URL.createObjectURL(newFile);
   });
-};
 
-export const getVideoMetadataFromFile = (file) => {
-  return new Promise((resolve, reject) => {
-    let video = document.createElement('video');
+/**
+ * TODO: need check
+ */
+const calculateGCD = () => {};
+
+export const getVideoMetadataFromFile = (file) =>
+  // eslint-disable-next-line implicit-arrow-linebreak
+  new Promise((resolve, reject) => {
+    const video = document.createElement('video');
     video.preload = 'metadata';
 
-    video.onloadedmetadata = function () {
+    video.onloadedmetadata = () => {
       URL.revokeObjectURL(video.src);
       const ratio = calculateGCD(video.videoWidth, video.videoHeight);
 
@@ -98,10 +107,9 @@ export const getVideoMetadataFromFile = (file) => {
       resolve(videoInfo);
     };
 
-    video.onerror = function (err) {
+    video.onerror = (err) => {
       reject(err);
     };
 
     video.src = URL.createObjectURL(file);
   });
-};

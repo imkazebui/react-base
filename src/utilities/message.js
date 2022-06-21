@@ -14,6 +14,4 @@ export const messageDestroy = () => {
   message.destroy();
 };
 
-export const messageLoading = (config) => {
-  return message.loading({ duration, ...config });
-};
+export const messageLoading = (config) => message.loading({ duration, ...config });

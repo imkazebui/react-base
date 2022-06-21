@@ -1,3 +1,5 @@
+/* eslint-disable react/require-default-props */
+/* eslint-disable react/forbid-prop-types */
 import React, { useMemo } from 'react';
 import { Input as InputAntd } from 'antd';
 import PropTypes from 'prop-types';

@@ -1,11 +1,11 @@
-import React from "react";
-import { Route, useNavigate, Routes } from "react-router-dom";
-import { Button, Result, Layout } from "antd";
+import React from 'react';
+import { Route, useNavigate, Routes } from 'react-router-dom';
+import { Button, Result, Layout } from 'antd';
 
-import renderRoutes from "routers";
-import { Sidebar, Header } from "components/Organisms";
+import renderRoutes from 'routers';
+import { Sidebar, Header } from 'components/Organisms';
 
-import "./styles.scss";
+import './styles.scss';
 
 const { Content } = Layout;
 
@@ -19,7 +19,7 @@ const PrivateLayout = () => {
         <Header />
         <Content id="site-content">
           <Routes>
-            {renderRoutes("private-layout")}
+            {renderRoutes('private-layout')}
 
             {/* <Route exact path="/">
                 <Redirect to={routePath.TEAM} />
@@ -31,13 +31,13 @@ const PrivateLayout = () => {
                 title="PAGE NOT FOUND"
                 subTitle="Sorry, the page you visited does not exist."
                 extra={
-                  <Button type="primary" onClick={() => navigate("/")}>
+                  <Button type="primary" onClick={() => navigate('/')}>
                     Back Home
                   </Button>
                 }
               />
             </Route>
-            </Routes>
+          </Routes>
         </Content>
       </Layout>
     </Layout>

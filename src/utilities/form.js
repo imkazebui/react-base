@@ -1,15 +1,3 @@
-export const checkFormAntInvalid = (form, requiredField = []) => {
-  let isEmptyObjects = false;
-  const errors = form
-    .getFieldsError()
-    .filter(({ errors }) => errors.length).length;
-  if (requiredField.length) {
-    const dataFields = form.getFieldsValue() || {};
-    isEmptyObjects = !checkRequiredFieldHasValue(dataFields, requiredField);
-  }
-  return errors || isEmptyObjects;
-};
-
 /*
  @param { 1: '', 2: {3: ''} } object
  @param ['1', '3'] requiredField: array of keys in object
@@ -30,6 +18,16 @@ const checkRequiredFieldHasValue = (object, requiredField) => {
   );
 };
 
+export const checkFormAntInvalid = (form, requiredField = []) => {
+  let isEmptyObjects = false;
+  const errors = form.getFieldsError().filter(({ error }) => error.length).length;
+  if (requiredField.length) {
+    const dataFields = form.getFieldsValue() || {};
+    isEmptyObjects = !checkRequiredFieldHasValue(dataFields, requiredField);
+  }
+  return errors || isEmptyObjects;
+};
+
 export const resetFormErrors = (form) => {
   form.setFields(
     Object.entries(form.getFieldsValue()).reduce((acc, [key, value]) => {
@@ -44,7 +42,7 @@ export const resetFormErrors = (form) => {
 };
 
 export const resetErrorsAndValidateForm = (form) => {
-  let validated = form.getFieldsError().some((el) => el.errors.length);
+  const validated = form.getFieldsError().some((el) => el.errors.length);
   resetFormErrors(form);
   if (validated) {
     form.validateFields();

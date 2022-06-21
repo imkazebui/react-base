@@ -1,4 +1,6 @@
+/* eslint-disable react/jsx-filename-extension */
 import React, { lazy } from 'react';
+
 const Login = lazy(() => import('./Login'));
 
 export const routePath = {

@@ -7,8 +7,8 @@ const apiUrl = {
   list: apiBase,
 };
 
-export const useGetStaffList = (payload) => {
-  return useQuery(
+export const useGetStaffList = (payload) =>
+  useQuery(
     ['staff', payload],
     () =>
       axios
@@ -20,4 +20,3 @@ export const useGetStaffList = (payload) => {
       keepPreviousData: true,
     }
   );
-};

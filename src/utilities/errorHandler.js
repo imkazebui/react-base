@@ -11,10 +11,13 @@ class ErrorHandler {
     return errData && errData.code === code;
   }
 
+  /**
+   * TODO: have a new way to get onOk func
+   */
   static showError(err, options = {}) {
     const initOptions = { onOk: () => {} };
-    options = { ...initOptions, ...options };
-    const { onOk } = options;
+    const newOptions = { ...initOptions, ...options };
+    const { onOk } = newOptions;
     const errData = this.getErrorData(err);
     if (errData && errData.message) {
       showModalError({
