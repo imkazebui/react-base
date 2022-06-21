@@ -11,6 +11,9 @@ import messages from 'translations';
 
 function App() {
   const language = 'en';
+
+  console.log('hello');
+
   return (
     <React.StrictMode>
       <QueryClientProvider client={queryClient}>
